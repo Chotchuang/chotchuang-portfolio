@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { projects } from "./data/projects";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://chotchuang.uk";
 
