@@ -25,7 +25,10 @@ export default function Home() {
               <Link className="button button-primary" href="/project">
                 Explore my work
               </Link>
-              <a className="button button-secondary" href="mailto:cc.tsrif@gmail.com">
+              <Link className="button button-secondary" href="/files">
+                View work files
+              </Link>
+              <a className="button button-secondary" href="mailto:chotchuang.cc@gmail.com">
                 Start a conversation
               </a>
             </div>

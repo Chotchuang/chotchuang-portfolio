@@ -52,3 +52,27 @@ test("renders the project archive and a project case", async () => {
   assert.match(caseHtml, /Investment Intelligence for Retail Investors/i);
   assert.match(caseHtml, /Open live project/i);
 });
+
+test("renders selected work files and the updated work email", async () => {
+  const [homeResponse, filesResponse, merchantResponse] = await Promise.all([
+    render("/"),
+    render("/files"),
+    render("/project/merchant-growth-fintech"),
+  ]);
+
+  assert.equal(homeResponse.status, 200);
+  assert.equal(filesResponse.status, 200);
+  assert.equal(merchantResponse.status, 200);
+
+  const homeHtml = await homeResponse.text();
+  const filesHtml = await filesResponse.text();
+  const merchantHtml = await merchantResponse.text();
+
+  assert.match(homeHtml, /chotchuang\.cc@gmail\.com/i);
+  assert.doesNotMatch(homeHtml, /cc\.tsrif@gmail\.com/i);
+  assert.match(filesHtml, /Evidence you can/i);
+  assert.match(filesHtml, /Merchant Growth Strategy Deck/i);
+  assert.match(filesHtml, /E-commerce Budget Allocation/i);
+  assert.match(merchantHtml, /Selected work files/i);
+  assert.match(merchantHtml, /unit-economics\.xlsx/i);
+});

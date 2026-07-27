@@ -5,6 +5,14 @@ export type ProjectCategory =
   | "Data & Systems"
   | "Strategy & Research";
 
+export type WorkFile = {
+  title: string;
+  format: "PDF" | "Excel" | "HTML";
+  size: string;
+  href: string;
+  description: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -19,6 +27,7 @@ export type Project = {
   evidence: string[];
   tech: string[];
   liveUrl?: string;
+  files?: WorkFile[];
 };
 
 export const projects: Project[] = [
@@ -72,6 +81,32 @@ export const projects: Project[] = [
       "Editable unit-economics and sensitivity workbook",
     ],
     tech: ["SQL", "DuckDB", "Python", "Statistics", "Tableau", "Excel"],
+    files: [
+      {
+        title: "Merchant Growth Strategy Deck",
+        format: "PDF",
+        size: "305 KB",
+        href: "/work/merchant-growth/strategy-deck.pdf",
+        description:
+          "Executive narrative covering acquisition, retention, unit economics, wallet adoption, and financing guardrails.",
+      },
+      {
+        title: "Merchant Unit Economics Model",
+        format: "Excel",
+        size: "16 KB",
+        href: "/work/merchant-growth/unit-economics.xlsx",
+        description:
+          "Editable workbook for contribution margin, CAC payback, and scenario sensitivity.",
+      },
+      {
+        title: "Merchant Performance Dashboard",
+        format: "HTML",
+        size: "9 KB",
+        href: "/work/merchant-growth/dashboard.html",
+        description:
+          "Browser-ready executive dashboard generated from the reproducible analytics pipeline.",
+      },
+    ],
   },
   {
     slug: "travel-product-analytics",
@@ -97,6 +132,16 @@ export const projects: Project[] = [
       "Dashboard package, experiment readout, and weekly brief",
     ],
     tech: ["Python", "SQL", "Experimentation", "Tableau", "Automation"],
+    files: [
+      {
+        title: "Travel Funnel Dashboard",
+        format: "HTML",
+        size: "5 KB",
+        href: "/work/travel-analytics/funnel-dashboard.html",
+        description:
+          "Browser-ready conversion funnel and experiment dashboard built from synthetic clickstream data.",
+      },
+    ],
   },
   {
     slug: "ecommerce-growth",
@@ -122,6 +167,24 @@ export const projects: Project[] = [
       "Commercial recommendation, charts, workbook, and executive deck",
     ],
     tech: ["PostgreSQL", "DuckDB", "SQL", "Statistics", "Excel"],
+    files: [
+      {
+        title: "E-commerce Growth Strategy",
+        format: "PDF",
+        size: "213 KB",
+        href: "/work/ecommerce-growth/growth-strategy.pdf",
+        description:
+          "Executive deck connecting channel quality, mobile conversion, product mix, refunds, and budget allocation.",
+      },
+      {
+        title: "E-commerce Budget Allocation",
+        format: "Excel",
+        size: "13 KB",
+        href: "/work/ecommerce-growth/budget-allocation.xlsx",
+        description:
+          "Editable planning workbook for channel budgets, expected contribution, and decision guardrails.",
+      },
+    ],
   },
   {
     slug: "agentic-finops",
@@ -390,6 +453,19 @@ export const projects: Project[] = [
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
+
+export const projectsWithFiles = projects.filter(
+  (project) => project.files && project.files.length > 0,
+);
+
+export const workFiles = projectsWithFiles.flatMap((project) =>
+  (project.files ?? []).map((file) => ({
+    ...file,
+    projectSlug: project.slug,
+    projectTitle: project.shortTitle,
+    disclosure: project.disclosure,
+  })),
+);
 
 export const categories = [
   "All",

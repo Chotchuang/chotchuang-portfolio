@@ -13,6 +13,13 @@ const requiredFiles = [
   "project/index.html",
   "project/bluex/index.html",
   "project/merchant-growth-fintech/index.html",
+  "files/index.html",
+  "work/merchant-growth/strategy-deck.pdf",
+  "work/merchant-growth/unit-economics.xlsx",
+  "work/merchant-growth/dashboard.html",
+  "work/ecommerce-growth/growth-strategy.pdf",
+  "work/ecommerce-growth/budget-allocation.xlsx",
+  "work/travel-analytics/funnel-dashboard.html",
   "og.png",
   "robots.txt",
   "sitemap.xml",
@@ -66,10 +73,15 @@ const projectIndex = await readFile(
   new URL("project/index.html", rootUrl),
   "utf8",
 );
+const filesIndex = await readFile(new URL("files/index.html", rootUrl), "utf8");
 
 assert.match(home, /CHOTCHUANG/i);
 assert.match(home, /decisions people can act on/i);
 assert.match(projectIndex, /PROJECT ARCHIVE/i);
+assert.match(filesIndex, /WORK FILES/i);
+assert.match(filesIndex, /Merchant Growth Strategy Deck/i);
+assert.match(home, /chotchuang\.cc@gmail\.com/i);
+assert.doesNotMatch(home, /cc\.tsrif@gmail\.com/i);
 
 console.log(
   JSON.stringify(

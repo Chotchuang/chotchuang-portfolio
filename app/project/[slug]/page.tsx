@@ -81,6 +81,11 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                   Open live project ↗
                 </a>
               ) : null}
+              {project.files?.length ? (
+                <a className="button button-secondary" href="#work-files">
+                  View {project.files.length} work file{project.files.length > 1 ? "s" : ""}
+                </a>
+              ) : null}
             </aside>
 
             <div className="case-content">
@@ -107,6 +112,31 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                   ))}
                 </ul>
               </section>
+              {project.files?.length ? (
+                <section id="work-files">
+                  <p className="eyebrow">SELECTED WORK FILES</p>
+                  <div className="case-file-list">
+                    {project.files.map((file) => (
+                      <article className="case-file" key={file.href}>
+                        <div className="file-badge">{file.format}</div>
+                        <div>
+                          <h3>{file.title}</h3>
+                          <p>{file.description}</p>
+                          <span>{file.size}</span>
+                        </div>
+                        <a
+                          aria-label={`Open ${file.title}`}
+                          href={file.href}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          Open ↗
+                        </a>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
               <section className="integrity-note">
                 <p className="eyebrow">EVIDENCE INTEGRITY</p>
                 <p>

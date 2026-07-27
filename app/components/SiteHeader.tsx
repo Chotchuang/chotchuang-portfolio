@@ -12,7 +12,8 @@ export function SiteHeader() {
       <nav aria-label="Primary navigation">
         <Link href="/#about">About</Link>
         <Link href="/project">Projects</Link>
-        <a href="mailto:cc.tsrif@gmail.com">Contact</a>
+        <Link href="/files">Files</Link>
+        <a href="mailto:chotchuang.cc@gmail.com">Contact</a>
       </nav>
     </header>
   );

@@ -816,9 +816,190 @@ a:focus-visible {
   padding: 28px;
 }
 
+.case-file-list {
+  display: grid;
+  gap: 12px;
+}
+
+.case-file {
+  align-items: center;
+  background: rgba(255, 252, 245, 0.72);
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 18px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  padding: 20px;
+}
+
+.case-file h3 {
+  font-size: 1.08rem;
+  margin: 0 0 7px;
+}
+
+.case-file p {
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0 0 8px;
+}
+
+.case-file div > span,
+.case-file > a {
+  color: var(--blue);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.case-file > a {
+  border-bottom: 1px solid currentColor;
+  padding: 8px 0;
+}
+
 .integrity-note p:last-child {
   line-height: 1.65;
   margin: 0;
+}
+
+.files-hero {
+  padding-bottom: 54px;
+}
+
+.file-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 36px;
+}
+
+.file-summary span {
+  align-items: baseline;
+  background: var(--ink);
+  color: var(--paper-bright);
+  display: inline-flex;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  gap: 8px;
+  padding: 12px 15px;
+  text-transform: uppercase;
+}
+
+.file-summary strong {
+  color: var(--cyan);
+  font-size: 1.1rem;
+}
+
+.files-section {
+  padding: 30px 0 110px;
+}
+
+.file-group {
+  border-bottom: 1px solid var(--line);
+  padding: 64px 0;
+}
+
+.file-group > header {
+  align-items: end;
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.file-group h2 {
+  font-size: clamp(2.3rem, 4.4vw, 4.8rem);
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+  margin: 0 0 13px;
+}
+
+.file-group header p:last-child {
+  color: var(--muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.69rem;
+  margin: 0;
+}
+
+.file-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.file-card {
+  background: rgba(255, 252, 245, 0.68);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  min-height: 330px;
+  padding: 24px;
+}
+
+.file-card-topline {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.65rem;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.file-badge {
+  align-items: center;
+  background: var(--blue);
+  color: white;
+  display: inline-flex;
+  flex: none;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  height: 38px;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  min-width: 54px;
+  padding: 0 9px;
+  text-transform: uppercase;
+}
+
+.file-card h3 {
+  font-size: 1.55rem;
+  letter-spacing: -0.045em;
+  line-height: 1.04;
+  margin: 44px 0 14px;
+}
+
+.file-card > p {
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0 0 28px;
+}
+
+.file-card .button {
+  margin-top: auto;
+  width: 100%;
+}
+
+.file-integrity {
+  background: var(--ink);
+  color: var(--paper-bright);
+  margin-bottom: 20px;
+  padding: 52px;
+}
+
+.file-integrity h2 {
+  font-size: clamp(2rem, 4vw, 4.3rem);
+  letter-spacing: -0.06em;
+  line-height: 1;
+  margin: 0 0 22px;
+  max-width: 720px;
+}
+
+.file-integrity > p:last-child {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 760px;
 }
 
 .next-case {
@@ -862,7 +1043,8 @@ a:focus-visible {
   }
 
   .project-grid,
-  .all-projects {
+  .all-projects,
+  .file-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -934,7 +1116,8 @@ a:focus-visible {
   }
 
   .project-grid,
-  .all-projects {
+  .all-projects,
+  .file-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1002,6 +1185,29 @@ a:focus-visible {
 
   .case-sidebar {
     position: static;
+  }
+
+  .case-file {
+    align-items: start;
+    grid-template-columns: auto 1fr;
+  }
+
+  .case-file > a {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .file-group > header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .file-card {
+    min-height: 300px;
+  }
+
+  .file-integrity {
+    padding: 34px 24px;
   }
 
   .next-case a {

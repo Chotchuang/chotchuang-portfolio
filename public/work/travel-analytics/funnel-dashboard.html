@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OTA Funnel Dashboard — Bangkok</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f4f6f8; color: #1a1a2e; }
+    body { margin: 0; padding: 24px; max-width: 1200px; margin-inline: auto; }
+    h1 { font-size: 1.5rem; margin-bottom: 4px; }
+    .sub { color: #666; margin-bottom: 24px; }
+    .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+    .kpi { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+    .kpi .val { font-size: 1.6rem; font-weight: 700; color: #2980b9; }
+    .kpi .lbl { font-size: 0.75rem; text-transform: uppercase; color: #888; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+    .card { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+    .card h2 { font-size: 1rem; margin: 0 0 12px; }
+    .decision { display: inline-block; padding: 4px 10px; border-radius: 4px; font-weight: 600; font-size: 0.85rem;
+      background: #fdebd0; color: #b7950b; }
+    footer { margin-top: 32px; font-size: 0.8rem; color: #999; }
+  </style>
+</head>
+<body>
+  <h1>OTA Conversion Funnel — Bangkok</h1>
+  <p class="sub">Portfolio dashboard · Project 2 · Synthetic clickstream linked to Project 1 listings</p>
+
+  <div class="kpis">
+    <div class="kpi"><div class="lbl">Sessions</div><div class="val">25,000</div></div>
+    <div class="kpi"><div class="lbl">Overall CVR</div><div class="val">2.83%</div></div>
+    <div class="kpi"><div class="lbl">Purchases</div><div class="val">707</div></div>
+    <div class="kpi"><div class="lbl">A/B Uplift</div><div class="val">+14.7%</div></div>
+    <div class="kpi"><div class="lbl">p-value</div><div class="val">0.110209</div></div>
+    <div class="kpi"><div class="lbl">Decision</div><div class="val" style="font-size:1rem"><span class="decision">DO_NOT_SHIP</span></div></div>
+  </div>
+
+  <div class="grid">
+    <div class="card"><h2>Funnel — Sessions per Step</h2><canvas id="funnelChart" height="200"></canvas></div>
+    <div class="card"><h2>PDP CVR by Device</h2><canvas id="deviceChart" height="200"></canvas></div>
+    <div class="card"><h2>A/B Test — PDP CVR</h2><canvas id="abChart" height="200"></canvas></div>
+    <div class="card"><h2>Markets</h2><canvas id="marketChart" height="200"></canvas></div>
+  </div>
+
+  <footer>
+    Open <code>output/tableau/*.csv</code> in Tableau Public for full interactivity.
+    Regenerate: <code>python scripts/run_tableau_export.py</code>
+  </footer>
+
+  <script>
+    const funnelCtx = document.getElementById('funnelChart');
+    new Chart(funnelCtx, {
+      type: 'bar',
+      data: {
+        labels: ["Search", "View PDP", "Select Dates", "Checkout", "Purchase"],
+        datasets: [{ label: 'Sessions', data: [25000, 20035, 2712, 1262, 707],
+          backgroundColor: ['#3498db','#2980b9','#1f618d','#154360','#0e6655'] }]
+      },
+      options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+    });
+
+    new Chart(document.getElementById('deviceChart'), {
+      type: 'bar',
+      data: {
+        labels: ["mobile", "desktop", "app"],
+        datasets: [{ label: 'PDP CVR %', data: [2.89, 4.07, 4.67], backgroundColor: '#9b59b6' }]
+      },
+      options: { plugins: { legend: { display: false } } }
+    });
+
+    new Chart(document.getElementById('abChart'), {
+      type: 'bar',
+      data: {
+        labels: ["Control", "Treatment"],
+        datasets: [{ label: 'PDP CVR %', data: [3.37, 3.8699999999999997],
+          backgroundColor: ['#95a5a6','#e67e22'] }]
+      },
+      options: { plugins: { legend: { display: false } } }
+    });
+
+    new Chart(document.getElementById('marketChart'), {
+      type: 'bar',
+      data: {
+        labels: ["BKK", "SG", "TH_other"],
+        datasets: [
+          { label: 'Overall CVR %', data: [2.9, 2.75, 2.41], backgroundColor: '#3498db' },
+          { label: 'PDP CVR %', data: [3.62, 3.43, 3.01], backgroundColor: '#2ecc71' }
+        ]
+      }
+    });
+  </script>
+</body>
+</html>
