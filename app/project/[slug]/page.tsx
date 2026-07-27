@@ -1,0 +1,134 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { SiteFooter } from "../../components/SiteFooter";
+import { SiteHeader } from "../../components/SiteHeader";
+import { projectBySlug, projects } from "../../data/projects";
+
+type ProjectPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export function generateStaticParams() {
+  return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projectBySlug(slug);
+
+  if (!project) {
+    return { title: "Project not found" };
+  }
+
+  return {
+    title: project.shortTitle,
+    description: project.summary,
+  };
+}
+
+export default async function ProjectDetail({ params }: ProjectPageProps) {
+  const { slug } = await params;
+  const project = projectBySlug(slug);
+
+  if (!project) {
+    notFound();
+  }
+
+  const projectIndex = projects.findIndex((item) => item.slug === project.slug);
+  const nextProject = projects[(projectIndex + 1) % projects.length];
+
+  return (
+    <main>
+      <div className="shell">
+        <SiteHeader />
+        <article className="case-study">
+          <header className="case-header">
+            <Link className="back-link" href="/project">
+              ← All projects
+            </Link>
+            <div className="case-meta">
+              <span>{project.category}</span>
+              <span>{project.status}</span>
+            </div>
+            <h1>{project.title}</h1>
+            <p className="case-summary">{project.summary}</p>
+            <div className="disclosure-banner">
+              <span>Evidence label</span>
+              <strong>{project.disclosure}</strong>
+            </div>
+          </header>
+
+          <div className="case-layout">
+            <aside className="case-sidebar">
+              <p className="eyebrow">TOOLKIT</p>
+              <div className="chip-row">
+                {project.tech.map((item) => (
+                  <span className="chip" key={item}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+              {project.liveUrl ? (
+                <a
+                  className="button button-primary"
+                  href={project.liveUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Open live project ↗
+                </a>
+              ) : null}
+            </aside>
+
+            <div className="case-content">
+              <section>
+                <p className="eyebrow">THE DECISION</p>
+                <h2>{project.decision}</h2>
+              </section>
+              <section>
+                <p className="eyebrow">APPROACH</p>
+                <ol className="case-list">
+                  {project.methods.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ol>
+              </section>
+              <section>
+                <p className="eyebrow">EVIDENCE & DELIVERABLES</p>
+                <ul className="evidence-list">
+                  {project.evidence.map((item) => (
+                    <li key={item}>
+                      <span aria-hidden="true">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+              <section className="integrity-note">
+                <p className="eyebrow">EVIDENCE INTEGRITY</p>
+                <p>
+                  This case is presented as <strong>{project.disclosure.toLowerCase()}</strong>.
+                  The label distinguishes observed work from simulated impact, proxies,
+                  historical comparisons, or proposed architecture.
+                </p>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <section className="next-case">
+          <p className="eyebrow">NEXT CASE</p>
+          <Link href={`/project/${nextProject.slug}`}>
+            <span>{nextProject.category}</span>
+            <strong>{nextProject.shortTitle}</strong>
+            <b aria-hidden="true">→</b>
+          </Link>
+        </section>
+        <SiteFooter />
+      </div>
+    </main>
+  );
+}
