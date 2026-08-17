@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Multi-timeframe momentum chart preview">
+  <rect width="1200" height="675" fill="#fff8f0"/>
+  <text x="48" y="64" fill="#111" font-family="sans-serif" font-size="28" font-weight="700">Momentum score  multi-timeframe</text>
+  <text x="48" y="98" fill="#666" font-family="monospace" font-size="14">TWxy / OPUS family � illustrative portfolio research view</text>
+  <line x1="80" y1="560" x2="1120" y2="560" stroke="#ddd" stroke-width="2"/>
+  <line x1="80" y1="140" x2="80" y2="560" stroke="#ddd" stroke-width="2"/>
+  <path d="M80,420 C180,380 260,360 360,300 S560,260 680,220 S900,180 1120,150" fill="none" stroke="#2c5cff" stroke-width="5"/>
+  <path d="M80,470 C200,450 300,430 420,390 S640,350 760,330 S980,300 1120,280" fill="none" stroke="#58d7e8" stroke-width="4" stroke-dasharray="10 8"/>
+  <path d="M80,500 C220,490 360,470 500,430 S760,390 920,360 1120,340" fill="none" stroke="#ff6d4a" stroke-width="3"/>
+  <rect x="860" y="160" width="260" height="120" fill="#111" opacity="0.92"/>
+  <text x="884" y="196" fill="#58d7e8" font-family="monospace" font-size="12">DAILY</text>
+  <text x="884" y="228" fill="#fff" font-family="sans-serif" font-size="22" font-weight="700">+2.4 � momentum</text>
+  <text x="884" y="258" fill="#ccc" font-family="sans-serif" font-size="14">ANOVA validated � not trading advice</text>
+</svg>

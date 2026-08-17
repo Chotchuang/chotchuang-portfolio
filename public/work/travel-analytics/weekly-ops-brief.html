@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weekly Product Ops Brief — Travel Analytics</title>
+  <style>
+    :root {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #fff8f0;
+      color: #111;
+      line-height: 1.55;
+    }
+    body { margin: 0 auto; max-width: 900px; padding: 40px 24px 64px; }
+    h1 { font-size: 1.8rem; letter-spacing: -0.03em; margin: 0 0 8px; }
+    .meta { color: #666; font-family: ui-monospace, monospace; font-size: 0.85rem; margin-bottom: 32px; }
+    h2 { border-top: 1px solid #ddd; font-size: 1.1rem; margin: 32px 0 12px; padding-top: 24px; text-transform: uppercase; letter-spacing: 0.08em; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background: #111; color: #fff; font-size: 0.8rem; text-transform: uppercase; }
+    .flag { background: #fff3cd; border-left: 4px solid #f4c542; padding: 12px 16px; }
+    ul { padding-left: 1.2rem; }
+    footer { color: #888; font-size: 0.8rem; margin-top: 48px; }
+  </style>
+</head>
+<body>
+  <h1>Weekly Product Ops Brief</h1>
+  <p class="meta">2026-W25 · 2026-06-26 · Portfolio Project 3 · Synthetic + public data</p>
+
+  <h2>Problem</h2>
+  <p>Ops analysts spend roughly 45 minutes every Monday copying metrics from separate content audits and funnel dashboards into a stakeholder update.</p>
+
+  <h2>Solution</h2>
+  <p>One-command pipeline that pulls Project 1 content health, Project 2 funnel and experiment status, computes week-over-week deltas, and outputs a Slack-ready brief.</p>
+
+  <h2>This week's snapshot</h2>
+  <table>
+    <thead><tr><th>Domain</th><th>Key metric</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>Content</td><td>Avg score</td><td><strong>66.39</strong> (-0.60 WoW)</td></tr>
+      <tr><td>Content</td><td>At risk</td><td><strong>49.4%</strong> (11,480 listings)</td></tr>
+      <tr><td>Funnel</td><td>Overall CVR</td><td><strong>2.83%</strong> (-3.7% WoW)</td></tr>
+      <tr><td>Experiment</td><td>Decision</td><td><strong>DO_NOT_SHIP</strong> (+14.7% uplift, p=0.110)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Content health highlights</h2>
+  <ul>
+    <li>Critical tier: 11.63%</li>
+    <li>Top-50 uplift proxy: +8,908 reviews/year</li>
+    <li>Top RICE: Cozy canal house near Grand Palace (12.42)</li>
+  </ul>
+
+  <h2>Funnel & experiment</h2>
+  <ul>
+    <li>Revenue per session: 59.65 THB</li>
+    <li>Biggest leak: view_listing → select_dates</li>
+    <li>Experiment readout: do not ship current variant</li>
+  </ul>
+
+  <div class="flag"><strong>Flags:</strong> 0 red · 3 yellow — see full anomaly report in portfolio repo.</div>
+
+  <h2>Ask</h2>
+  <p>Approve Mid-Market content batch and experiment follow-up. Adopt as Monday 08:00 SOP with owners in report config.</p>
+
+  <footer>Portfolio evidence only · Public listings + synthetic clickstream · Not Agoda operational data.</footer>
+</body>
+</html>

@@ -379,7 +379,7 @@ a:focus-visible {
   flex-direction: column;
   min-height: 470px;
   overflow: hidden;
-  padding: 28px;
+  padding: 0;
   position: relative;
   transition:
     background 180ms ease,
@@ -408,6 +408,33 @@ a:focus-visible {
 
 .project-card:hover::after {
   transform: scaleX(1);
+}
+
+.card-cover {
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  position: relative;
+}
+
+.card-cover img {
+  object-fit: cover;
+}
+
+.project-card > :not(.card-cover) {
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.project-card > .card-topline {
+  margin-top: 28px;
+}
+
+.project-card > .text-link {
+  margin-bottom: 28px;
+  margin-top: auto;
+  padding-bottom: 28px;
 }
 
 .card-topline {
@@ -715,6 +742,49 @@ a:focus-visible {
 .disclosure-banner strong {
   font-size: 0.88rem;
   text-align: right;
+}
+
+.case-hero {
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  margin: 48px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.case-hero img {
+  object-fit: cover;
+}
+
+.case-gallery {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 32px;
+}
+
+.case-gallery-item {
+  border: 1px solid var(--line);
+  margin: 0;
+  overflow: hidden;
+}
+
+.case-gallery-media {
+  aspect-ratio: 16 / 9;
+  background: var(--surface);
+  position: relative;
+}
+
+.case-gallery-media img {
+  object-fit: contain;
+}
+
+.case-gallery-item figcaption {
+  color: var(--muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  padding: 12px 14px;
 }
 
 .case-layout {

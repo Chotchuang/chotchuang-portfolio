@@ -1,25 +1,70 @@
 import assert from "node:assert/strict";
 import { readdir, readFile, stat } from "node:fs/promises";
-import { join, relative } from "node:path";
+import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const rootUrl = new URL("../out/", import.meta.url);
-const root = fileURLToPath(rootUrl);
+const root = resolve(fileURLToPath(rootUrl));
 const maxFileCount = 20_000;
 const maxFileBytes = 25 * 1024 * 1024;
+const bluexDashboardTickers = [
+  "aapl",
+  "amd",
+  "amzn",
+  "ba",
+  "brk-b",
+  "cl=f",
+  "fdx",
+  "gld",
+  "googl",
+  "intc",
+  "ko",
+  "mu",
+  "nflx",
+  "nvda",
+  "qcom",
+  "qqq",
+  "wdc",
+  "wmt",
+];
 
 const requiredFiles = [
   "index.html",
   "project/index.html",
   "project/bluex/index.html",
   "project/merchant-growth-fintech/index.html",
+  "project/travel-product-analytics/index.html",
+  "project/agentic-finops/index.html",
+  "project/digital-health-blockchain/index.html",
   "files/index.html",
+  "work/bluex/cover-dashboard.svg",
+  "work/bluex/cover-momentum-chart.svg",
+  "work/bluex/architecture.svg",
+  "work/bluex/ml-signal-research.html",
+  "work/bluex/ml/index-ensemble.html",
+  "work/bluex/ml/index-xgboost.html",
+  "work/bluex/ml/index-lightgbm.html",
+  ...bluexDashboardTickers.map(
+    (ticker) =>
+      `work/bluex/ml/dashboards/${ticker}_signal_daily_ensemble.html`,
+  ),
+  "work/travel-analytics/funnel-dashboard.html",
+  "work/travel-analytics/weekly-ops-brief.html",
+  "work/travel-analytics/cover-funnel.svg",
+  "work/agentic-finops/executive-summary.pdf",
+  "work/agentic-finops/cover.svg",
+  "work/digital-health/architecture-summary.pdf",
+  "work/digital-health/cover.svg",
+  "work/financial-crm/er-diagram.png",
+  "work/financial-crm/schema-overview.html",
+  "work/restaurant-data-model/relational-model.pdf",
+  "work/hotel-analyzer/cli-demo.svg",
+  "work/daily-intel-hub/architecture.svg",
   "work/merchant-growth/strategy-deck.pdf",
   "work/merchant-growth/unit-economics.xlsx",
   "work/merchant-growth/dashboard.html",
   "work/ecommerce-growth/growth-strategy.pdf",
   "work/ecommerce-growth/budget-allocation.xlsx",
-  "work/travel-analytics/funnel-dashboard.html",
   "og.png",
   "robots.txt",
   "sitemap.xml",
@@ -43,11 +88,54 @@ async function walk(directory) {
   return files;
 }
 
+async function assertLocalHtmlLinks(files) {
+  const localLinkPattern = /\b(?:href|src)=["']([^"']+)["']/gi;
+
+  for (const file of files.filter((path) => path.endsWith(".html"))) {
+    const html = await readFile(file, "utf8");
+
+    for (const [, rawLink] of html.matchAll(localLinkPattern)) {
+      if (
+        !rawLink ||
+        rawLink.startsWith("#") ||
+        rawLink.startsWith("//") ||
+        /^[a-z][a-z0-9+.-]*:/i.test(rawLink)
+      ) {
+        continue;
+      }
+
+      const pathWithoutQuery = rawLink.split(/[?#]/, 1)[0];
+      if (!pathWithoutQuery) {
+        continue;
+      }
+
+      const decodedPath = decodeURIComponent(pathWithoutQuery);
+      const target = decodedPath.startsWith("/")
+        ? resolve(root, `.${decodedPath}`)
+        : resolve(dirname(file), decodedPath);
+
+      assert.ok(
+        target === root || target.startsWith(`${root}${sep}`),
+        `${relative(root, file)} links outside the build output: ${rawLink}`,
+      );
+
+      try {
+        await stat(target);
+      } catch {
+        assert.fail(
+          `${relative(root, file)} has a missing local link: ${rawLink}`,
+        );
+      }
+    }
+  }
+}
+
 for (const file of requiredFiles) {
   await stat(new URL(file, rootUrl));
 }
 
 const files = await walk(root);
+await assertLocalHtmlLinks(files);
 assert.ok(
   files.length <= maxFileCount,
   `Pages output has ${files.length} files; the Free-plan limit is ${maxFileCount}.`,
@@ -80,6 +168,8 @@ assert.match(home, /decisions people can act on/i);
 assert.match(projectIndex, /PROJECT ARCHIVE/i);
 assert.match(filesIndex, /WORK FILES/i);
 assert.match(filesIndex, /Merchant Growth Strategy Deck/i);
+assert.match(filesIndex, /Weekly Product Ops Brief/i);
+assert.match(filesIndex, /Agentic FinOps Executive Summary/i);
 assert.match(home, /chotchuang\.cc@gmail\.com/i);
 assert.doesNotMatch(home, /cc\.tsrif@gmail\.com/i);
 

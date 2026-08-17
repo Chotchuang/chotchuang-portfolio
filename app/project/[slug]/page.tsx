@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "../../components/SiteFooter";
@@ -61,6 +62,38 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
             </div>
           </header>
 
+          {project.coverImage ? (
+            <figure className="case-hero">
+              <Image
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 1180px) 100vw, 1120px"
+                src={project.coverImage}
+                unoptimized
+              />
+            </figure>
+          ) : null}
+
+          {project.gallery?.length ? (
+            <section aria-label="Project gallery" className="case-gallery">
+              {project.gallery.map((image) => (
+                <figure className="case-gallery-item" key={image.src}>
+                  <div className="case-gallery-media">
+                    <Image
+                      alt={image.alt}
+                      fill
+                      sizes="(max-width: 760px) 100vw, 50vw"
+                      src={image.src}
+                      unoptimized
+                    />
+                  </div>
+                  <figcaption>{image.caption}</figcaption>
+                </figure>
+              ))}
+            </section>
+          ) : null}
+
           <div className="case-layout">
             <aside className="case-sidebar">
               <p className="eyebrow">TOOLKIT</p>
@@ -81,6 +114,16 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                   Open live project ↗
                 </a>
               ) : null}
+              {project.githubUrl ? (
+                <a
+                  className="button button-secondary"
+                  href={project.githubUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  View source ↗
+                </a>
+              ) : null}
               {project.files?.length ? (
                 <a className="button button-secondary" href="#work-files">
                   View {project.files.length} work file{project.files.length > 1 ? "s" : ""}
@@ -89,6 +132,12 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
             </aside>
 
             <div className="case-content">
+              {project.role ? (
+                <section>
+                  <p className="eyebrow">MY ROLE</p>
+                  <h2>{project.role}</h2>
+                </section>
+              ) : null}
               <section>
                 <p className="eyebrow">THE DECISION</p>
                 <h2>{project.decision}</h2>

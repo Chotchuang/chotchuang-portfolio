@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Hotel Analyzer CLI demo">
+  <rect width="960" height="540" rx="12" fill="#111"/>
+  <circle cx="28" cy="28" r="8" fill="#ff6d4a"/>
+  <circle cx="52" cy="28" r="8" fill="#f4c542"/>
+  <circle cx="76" cy="28" r="8" fill="#58d7e8"/>
+  <text x="28" y="78" fill="#58d7e8" font-family="monospace" font-size="14">$ python project.py</text>
+  <text x="28" y="112" fill="#ccc" font-family="monospace" font-size="14">Hotel Analyzer  Netherlands</text>
+  <text x="28" y="146" fill="#fff" font-family="monospace" font-size="14">City: Amsterdam | Min rating: 8.0 | Max price: 180</text>
+  <text x="28" y="190" fill="#58d7e8" font-family="monospace" font-size="14">Found 14 properties</text>
+  <text x="28" y="224" fill="#ccc" font-family="monospace" font-size="13">1. Canal View Boutique  8.6  �165</text>
+  <text x="28" y="248" fill="#ccc" font-family="monospace" font-size="13">2. Jordaan Garden Hotel  8.4  �149</text>
+  <text x="28" y="272" fill="#ccc" font-family="monospace" font-size="13">3. Museum Quarter Stay  8.2  �172</text>
+  <text x="28" y="316" fill="#fff" font-family="monospace" font-size="14">Avg price: �158.20 | Avg rating: 8.41</text>
+  <text x="28" y="360" fill="#58d7e8" font-family="monospace" font-size="14">Tests: 12 passed</text>
+</svg>

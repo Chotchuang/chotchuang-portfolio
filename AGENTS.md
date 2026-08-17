@@ -1,6 +1,6 @@
 # Chotchuang Portfolio — Agent Handoff and Website Guidelines
 
-Last updated: 2026-07-27
+Last updated: 2026-07-28
 
 This file is the operating guide for any agent continuing work on this
 portfolio. Read it before changing content, assets, hosting, DNS, or deployment
@@ -99,16 +99,33 @@ duplicating project metadata in components.
 
 ## 5. Current public work files
 
-These six files are intentionally public:
+These files are intentionally public:
 
 | Project | Public file | Format |
 |---|---|---|
+| BlueX | `public/work/bluex/cover-dashboard.svg` | SVG |
+| BlueX | `public/work/bluex/cover-momentum-chart.svg` | SVG |
+| BlueX | `public/work/bluex/architecture.svg` | SVG |
+| BlueX | `public/work/bluex/ml-signal-research.html` | HTML hub |
+| BlueX | `public/work/bluex/ml/index-ensemble.html` | HTML |
+| BlueX | `public/work/bluex/ml/index-xgboost.html` | HTML |
+| BlueX | `public/work/bluex/ml/index-lightgbm.html` | HTML |
+| BlueX | `public/work/bluex/ml/dashboards/*_signal_daily_ensemble.html` | HTML (18 tickers) |
 | Merchant Growth & Fintech Profitability | `public/work/merchant-growth/strategy-deck.pdf` | PDF |
 | Merchant Growth & Fintech Profitability | `public/work/merchant-growth/unit-economics.xlsx` | Excel |
 | Merchant Growth & Fintech Profitability | `public/work/merchant-growth/dashboard.html` | HTML |
 | Travel Product & Supply Analytics | `public/work/travel-analytics/funnel-dashboard.html` | HTML |
+| Travel Product & Supply Analytics | `public/work/travel-analytics/weekly-ops-brief.html` | HTML |
+| Travel Product & Supply Analytics | `public/work/travel-analytics/cover-funnel.svg` | SVG |
 | E-commerce Growth & Commercial Strategy | `public/work/ecommerce-growth/growth-strategy.pdf` | PDF |
 | E-commerce Growth & Commercial Strategy | `public/work/ecommerce-growth/budget-allocation.xlsx` | Excel |
+| Agentic FinOps | `public/work/agentic-finops/executive-summary.pdf` | PDF |
+| Digital Health | `public/work/digital-health/architecture-summary.pdf` | PDF |
+| Financial CRM | `public/work/financial-crm/er-diagram.png` | PNG |
+| Financial CRM | `public/work/financial-crm/schema-overview.html` | HTML |
+| Restaurant Data Model | `public/work/restaurant-data-model/relational-model.pdf` | PDF |
+| Hotel Analyzer | `public/work/hotel-analyzer/cli-demo.svg` | SVG |
+| Daily Intel Hub | `public/work/daily-intel-hub/architecture.svg` | SVG |
 
 The public URL mirrors the path below `public`. For example:
 
@@ -152,6 +169,22 @@ The case-study route is generated automatically at `/project/<slug>`.
 Keep public files small and browser-friendly. Cloudflare Pages checks currently
 enforce a maximum of 25 MiB per file and 20,000 files per deployment.
 
+### BlueX / Bluexprice export policy (mandatory)
+
+This portfolio repo is **public**. The Bluexprice research repo is proprietary.
+
+Agents may publish **sanitized result artifacts only** under `public/work/bluex/`:
+
+| Allowed | Forbidden |
+|---|---|
+| Generated HTML summary tables and Plotly dashboards | Any Bluexprice source (`core/`, `ML/`, `strategies/`, Pine) |
+| Architecture / cover SVGs written for the portfolio | Indicator formulas, feature recipes, strategy stacks |
+| Plain-language case narrative and disclaimers | Instructions that recreate the private pipeline |
+| Aggregate metrics already shown in research HTML | Raw CSV, full batch JSON, trade dumps that expose rules |
+
+If a file could help someone rebuild the signal system, do **not** add it.
+Cross-check Bluexprice **C-20 / U-03** before any BlueX export.
+
 ### Mandatory privacy and safety review
 
 Before publishing any PDF, spreadsheet, HTML dashboard, image, dataset, or
@@ -171,8 +204,9 @@ archive, check for:
 For PDF and Office files, inspect both the visible pages/sheets and embedded
 metadata. A simple text search alone is not sufficient.
 
-Never add raw datasets, private documents, credentials, `.env` files, or large
-archives to this public repository.
+Never add raw datasets, private documents, credentials, `.env` files, large
+archives, or proprietary Bluexprice source/formulas/strategy code to this public
+repository.
 
 ## 8. Design and UX guidelines
 
@@ -292,6 +326,21 @@ acceptable.
 - Prefer one reviewed push over many small pushes because each watched push may
   consume a Cloudflare build.
 - Keep `package-lock.json` in sync with `package.json`.
+- **Commit message (U-04, mandatory):** Before every owner-requested commit, ask
+  the owner to write the exact commit message and wait for it, unless the owner
+  already supplied the exact message in the same request. Use the owner's text
+  verbatim; do not silently rewrite, expand, or replace it.
+- **Automated-message fallback:** Use an agent-authored commit message only when
+  the owner has explicitly authorized automatic commits or a pre-authorized
+  automation cannot pause for input. The message must be a neutral,
+  internationally understandable description of the technical change. It must
+  not mention recruiters, HR, job applications, AI/ChatGPT, agents, prompts,
+  handoffs, internal workflow, or build-skip instructions. Do not include
+  proprietary BlueX formulas or strategy details. Suitable patterns include
+  `feat: add project evidence files`, `docs: update site documentation`, and
+  `fix: correct project metadata`.
+- Never rewrite an existing public commit message or force-push history without
+  the owner's separate explicit approval.
 - Update this guide whenever the hosting architecture, domain, work email,
   validation workflow, or public-file policy changes.
 

@@ -13,6 +13,12 @@ export type WorkFile = {
   description: string;
 };
 
+export type ProjectGalleryImage = {
+  src: string;
+  alt: string;
+  caption: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -23,10 +29,14 @@ export type Project = {
   disclosure: string;
   summary: string;
   decision: string;
+  role?: string;
   methods: string[];
   evidence: string[];
   tech: string[];
+  coverImage?: string;
+  gallery?: ProjectGalleryImage[];
   liveUrl?: string;
+  githubUrl?: string;
   files?: WorkFile[];
 };
 
@@ -38,23 +48,73 @@ export const projects: Project[] = [
     category: "Finance & AI",
     featured: true,
     status: "In progress",
-    disclosure: "Proprietary research system · Active build",
+    disclosure: "Proprietary research system · Active build · Not trading advice",
     summary:
-      "A momentum-scoring and portfolio-analysis system that turns multi-timeframe market signals into a focused intelligence workflow.",
+      "A systematic momentum-scoring and portfolio-research platform that turns multi-timeframe signals into evidence-led decisions for portfolio management.",
     decision:
-      "How can a retail investor compare market momentum, supporting evidence, and portfolio implications without stitching together multiple tools?",
+      "Which assets show the strongest current momentum, and is that signal statistically meaningful enough to inform portfolio weighting?",
+    role:
+      "End-to-end analyst and builder: indicator design, CSV pipeline, validation, ML experiments, and the public intelligence-board interface.",
     methods: [
-      "Designed a multi-timeframe momentum scoring framework",
-      "Built research workflows for indicator validation and backtesting",
-      "Explored statistical validation, machine learning, and portfolio views",
-      "Translated the analytical layer into an interactive intelligence board",
+      "Built a single canonical producer for multi-timeframe feature CSVs",
+      "Designed TWxy/OPUS momentum families with ANOVA validation",
+      "Ran tree/sklearn research and walk-forward checks on Mac; DL on RunPod only",
+      "Translated the research layer into an interactive intelligence board",
     ],
     evidence: [
-      "Working web-based intelligence board",
-      "Documented scoring and research framework",
-      "Multiple product and investor narrative iterations",
+      "Working intelligence board with portfolio-oriented views",
+      "Legacy ML remodel: ensemble, XGBoost, and LightGBM across 18 tickers",
+      "18 interactive daily ensemble dashboards with Plotly drill-down",
+      "Core research codebase remains proprietary; public case shows workflow and UI",
     ],
     tech: ["Python", "React", "Machine learning", "Backtesting", "Portfolio analytics"],
+    files: [
+      {
+        title: "ML Signal Research Hub",
+        format: "HTML",
+        size: "4 KB",
+        href: "/work/bluex/ml-signal-research.html",
+        description:
+          "Entry point for the June 2026 legacy pipeline: 18 tickers, three models, summary tables and daily ensemble dashboards.",
+      },
+      {
+        title: "Ensemble Summary (18 × 3 timeframes)",
+        format: "HTML",
+        size: "17 KB",
+        href: "/work/bluex/ml/index-ensemble.html",
+        description:
+          "Strategy return, alpha vs buy-and-hold, Sharpe, and ML accuracy for the ensemble model.",
+      },
+      {
+        title: "XGBoost Summary",
+        format: "HTML",
+        size: "15 KB",
+        href: "/work/bluex/ml/index-xgboost.html",
+        description:
+          "Gradient-boosted tree results on the same TWxy/OPUS feature pipeline and holdout window.",
+      },
+      {
+        title: "LightGBM Summary",
+        format: "HTML",
+        size: "15 KB",
+        href: "/work/bluex/ml/index-lightgbm.html",
+        description:
+          "LightGBM remodel metrics compared against ensemble and XGBoost on identical splits.",
+      },
+    ],
+    coverImage: "/work/bluex/cover-dashboard.svg",
+    gallery: [
+      {
+        src: "/work/bluex/cover-momentum-chart.svg",
+        alt: "Multi-timeframe momentum chart preview",
+        caption: "Illustrative momentum view across timeframes — research output, not a trade signal.",
+      },
+      {
+        src: "/work/bluex/architecture.svg",
+        alt: "BlueX three-layer architecture diagram",
+        caption: "central_df → scoring/ML → intelligence UI — strict separation of concerns.",
+      },
+    ],
     liveUrl: "https://blux-intelligence-board.blackhorsepartner.chatgpt.site",
   },
   {
@@ -120,6 +180,8 @@ export const projects: Project[] = [
       "A three-part travel marketplace case connecting content quality, experiment design, and weekly product operations.",
     decision:
       "Which property-content gaps should be fixed first, how should impact be tested, and what should the operating cadence monitor?",
+    role:
+      "Sole analyst across content scoring, funnel experimentation, and the weekly ops automation that stitches both workstreams together.",
     methods: [
       "Designed a four-dimension Content Quality Score",
       "Ranked the backlog with RICE and business-impact proxies",
@@ -132,6 +194,14 @@ export const projects: Project[] = [
       "Dashboard package, experiment readout, and weekly brief",
     ],
     tech: ["Python", "SQL", "Experimentation", "Tableau", "Automation"],
+    coverImage: "/work/travel-analytics/cover-funnel.svg",
+    gallery: [
+      {
+        src: "/work/travel-analytics/cover-funnel.svg",
+        alt: "OTA funnel dashboard KPI preview",
+        caption: "Synthetic Bangkok funnel dashboard with experiment decision surfaced.",
+      },
+    ],
     files: [
       {
         title: "Travel Funnel Dashboard",
@@ -140,6 +210,14 @@ export const projects: Project[] = [
         href: "/work/travel-analytics/funnel-dashboard.html",
         description:
           "Browser-ready conversion funnel and experiment dashboard built from synthetic clickstream data.",
+      },
+      {
+        title: "Weekly Product Ops Brief",
+        format: "HTML",
+        size: "4 KB",
+        href: "/work/travel-analytics/weekly-ops-brief.html",
+        description:
+          "Slack-ready weekly brief combining content health, funnel metrics, experiment readout, and ops flags.",
       },
     ],
   },
@@ -198,6 +276,8 @@ export const projects: Project[] = [
       "A product and business foundation for an AI financial optimizer focused on Thai consumers and responsible money decisions.",
     decision:
       "How might an agentic financial assistant coordinate cash flow, debt, and investment decisions while remaining transparent and governed?",
+    role:
+      "Product strategist and business architect: customer problem, journey, trust model, go-to-market, and KPI framework.",
     methods: [
       "Defined the customer problem, value proposition, and journey",
       "Designed debt optimization, cash-flow, and investment-sweep concepts",
@@ -205,11 +285,22 @@ export const projects: Project[] = [
       "Created go-to-market logic, financial model, and KPI framework",
     ],
     evidence: [
-      "26-page business foundation deck",
-      "Supporting marketing plan",
+      "12-page executive summary (sanitized excerpt from foundation deck)",
+      "Supporting marketing plan in private archive",
       "Explicit trust, risk, and operating assumptions",
     ],
     tech: ["Product strategy", "Fintech", "Agentic AI", "Financial modeling", "KPIs"],
+    coverImage: "/work/agentic-finops/cover.svg",
+    files: [
+      {
+        title: "Agentic FinOps Executive Summary",
+        format: "PDF",
+        size: "472 KB",
+        href: "/work/agentic-finops/executive-summary.pdf",
+        description:
+          "Sanitized opening section of the business foundation deck — concept proposal only.",
+      },
+    ],
   },
   {
     slug: "digital-health-blockchain",
@@ -223,6 +314,8 @@ export const projects: Project[] = [
       "A permissioned-blockchain architecture for health-data exchange, consent, privacy, and interoperability.",
     decision:
       "How can healthcare organizations share trusted records while preserving access control, patient consent, and regulatory boundaries?",
+    role:
+      "Research lead and enterprise architect for permissioned blockchain, consent flows, and governance design.",
     methods: [
       "Designed a Hyperledger Fabric permission model",
       "Separated on-chain proof from off-chain clinical data",
@@ -230,11 +323,22 @@ export const projects: Project[] = [
       "Considered interoperability, PDPA, and HIPAA requirements",
     ],
     evidence: [
-      "78-page architecture and research deck",
-      "Supporting technical research collection",
+      "10-page architecture summary (sanitized excerpt)",
+      "Supporting technical research collection in private archive",
       "End-to-end proposed data and governance flows",
     ],
     tech: ["Blockchain", "Hyperledger Fabric", "Data architecture", "Privacy", "Healthcare"],
+    coverImage: "/work/digital-health/cover.svg",
+    files: [
+      {
+        title: "Digital Health Architecture Summary",
+        format: "PDF",
+        size: "1.1 MB",
+        href: "/work/digital-health/architecture-summary.pdf",
+        description:
+          "Sanitized opening section of the research deck — proposed architecture, not a deployed system.",
+      },
+    ],
   },
   {
     slug: "hotel-analyzer",
@@ -248,6 +352,7 @@ export const projects: Project[] = [
       "A command-line hotel discovery tool that cleans, filters, and summarizes properties by city, price, and rating.",
     decision:
       "How can travelers narrow a large accommodation dataset into practical, comparable choices?",
+    role: "Sole developer: data cleaning, CLI filters, aggregation, tests, and documentation.",
     methods: [
       "Built a reusable data-cleaning pipeline",
       "Implemented city, price, and rating filters",
@@ -256,6 +361,14 @@ export const projects: Project[] = [
     ],
     evidence: ["Source code and dataset", "Automated tests", "README and video demonstration"],
     tech: ["Python", "pytest", "Data cleaning", "CLI"],
+    coverImage: "/work/hotel-analyzer/cli-demo.svg",
+    gallery: [
+      {
+        src: "/work/hotel-analyzer/cli-demo.svg",
+        alt: "Hotel Analyzer terminal output preview",
+        caption: "Illustrative CLI session showing filters, results, and test status.",
+      },
+    ],
   },
   {
     slug: "financial-crm-database",
@@ -269,6 +382,7 @@ export const projects: Project[] = [
       "A relational database for clients, investment orders, portfolio summaries, and loan tracking.",
     decision:
       "How should a financial application organize client, investing, and lending records with reliable constraints and reporting views?",
+    role: "Database designer and implementer: schema, constraints, views, triggers, and query layer.",
     methods: [
       "Designed normalized entities and relationships",
       "Implemented constraints, indexes, views, and triggers",
@@ -277,6 +391,23 @@ export const projects: Project[] = [
     ],
     evidence: ["Complete SQLite schema", "Query collection", "Design document and video overview"],
     tech: ["SQLite", "SQL", "Data modeling", "Database design"],
+    coverImage: "/work/financial-crm/er-diagram.png",
+    gallery: [
+      {
+        src: "/work/financial-crm/er-diagram.png",
+        alt: "Financial CRM entity-relationship diagram",
+        caption: "ER diagram for clients, orders, portfolios, and loans.",
+      },
+    ],
+    files: [
+      {
+        title: "Schema Overview",
+        format: "HTML",
+        size: "2 KB",
+        href: "/work/financial-crm/schema-overview.html",
+        description: "Short overview of entities, relationships, and design choices.",
+      },
+    ],
   },
   {
     slug: "restaurant-data-model",
@@ -290,6 +421,7 @@ export const projects: Project[] = [
       "A governed relational model for restaurant operations, customers, orders, inventory, and sensitive information.",
     decision:
       "How should a multi-location restaurant chain structure operational data so it remains usable, consistent, and governed?",
+    role: "Data modeler: conceptual design, 3NF relational schema, governance classification, and SQL queries.",
     methods: [
       "Designed conceptual and relational models",
       "Normalized 11 tables and 57 attributes to 3NF",
@@ -298,6 +430,15 @@ export const projects: Project[] = [
     ],
     evidence: ["SQLite database and schema", "Entity-relationship diagrams", "Four-part final submission"],
     tech: ["SQL", "SQLite", "3NF", "Data governance", "ER modeling"],
+    files: [
+      {
+        title: "Relational Data Model",
+        format: "PDF",
+        size: "302 KB",
+        href: "/work/restaurant-data-model/relational-model.pdf",
+        description: "UC Davis Part 2 submission — relational model and normalization rationale.",
+      },
+    ],
   },
   {
     slug: "daily-intel-hub",
@@ -311,18 +452,29 @@ export const projects: Project[] = [
       "An automated intelligence pipeline for market data, fundamentals, travel-price monitoring, and agent-orchestrated briefings.",
     decision:
       "How can recurring intelligence collection be coordinated into one inspectable, automated workflow?",
+    role: "Sole builder of collectors, SQLite persistence, LangGraph orchestration, and ops documentation.",
     methods: [
-      "Built market and fundamental-data collectors",
-      "Designed SQLite persistence and orchestration flows",
-      "Connected collector outputs to an agent workflow",
-      "Documented incomplete capture and travel-monitoring components",
+      "Built market and fundamental-data collectors (operational)",
+      "Designed SQLite persistence and LangGraph orchestration flows",
+      "Documented travel-price and AI-response capture as incomplete",
+      "Kept component status transparent in README and case study",
     ],
     evidence: [
-      "Operational market and fundamentals collectors",
-      "Documented LangGraph orchestration",
-      "Transparent in-progress component status",
+      "Market collector: operational",
+      "Fundamentals collector: operational",
+      "Travel monitoring: not complete",
+      "AI response capture: not complete",
+      "LangGraph orchestration: documented harness",
     ],
     tech: ["Python", "SQLite", "LangGraph", "Automation", "Web data"],
+    coverImage: "/work/daily-intel-hub/architecture.svg",
+    gallery: [
+      {
+        src: "/work/daily-intel-hub/architecture.svg",
+        alt: "Daily Intel Hub architecture diagram",
+        caption: "Collectors → SQLite → LangGraph → briefings. Travel and AI capture still in progress.",
+      },
+    ],
   },
   {
     slug: "adblocker-strategy",

@@ -51,6 +51,9 @@ test("renders the project archive and a project case", async () => {
   assert.match(archiveHtml, /Merchant Growth/i);
   assert.match(caseHtml, /Investment Intelligence for Retail Investors/i);
   assert.match(caseHtml, /Open live project/i);
+  assert.match(caseHtml, /MY ROLE/i);
+  assert.match(caseHtml, /ML Signal Research Hub/i);
+  assert.match(caseHtml, /index-ensemble\.html/i);
 });
 
 test("renders selected work files and the updated work email", async () => {
@@ -75,4 +78,12 @@ test("renders selected work files and the updated work email", async () => {
   assert.match(filesHtml, /E-commerce Budget Allocation/i);
   assert.match(merchantHtml, /Selected work files/i);
   assert.match(merchantHtml, /unit-economics\.xlsx/i);
+});
+
+test("renders travel case with weekly ops brief", async () => {
+  const response = await render("/project/travel-product-analytics");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Weekly Product Ops Brief/i);
+  assert.match(html, /weekly-ops-brief\.html/i);
 });

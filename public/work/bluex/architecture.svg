@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-label="BlueX system architecture">
+  <rect width="1200" height="420" fill="#fff8f0"/>
+  <text x="48" y="48" fill="#111" font-family="sans-serif" font-size="24" font-weight="700">BlueX research stack</text>
+  <rect x="48" y="90" width="320" height="250" fill="#111"/>
+  <text x="72" y="130" fill="#58d7e8" font-family="monospace" font-size="12">LAYER 1</text>
+  <text x="72" y="168" fill="#fff" font-family="sans-serif" font-size="22" font-weight="700">central_df.py</text>
+  <text x="72" y="206" fill="#ccc" font-family="sans-serif" font-size="15">Download � resample � compute</text>
+  <text x="72" y="236" fill="#ccc" font-family="sans-serif" font-size="15">Canonical CSV producer</text>
+  <rect x="440" y="90" width="320" height="250" fill="#171a21"/>
+  <text x="464" y="130" fill="#58d7e8" font-family="monospace" font-size="12">LAYER 2</text>
+  <text x="464" y="168" fill="#fff" font-family="sans-serif" font-size="22" font-weight="700">Scoring + ML</text>
+  <text x="464" y="206" fill="#ccc" font-family="sans-serif" font-size="15">TWxy / OPUS indicators</text>
+  <text x="464" y="236" fill="#ccc" font-family="sans-serif" font-size="15">ANOVA � walk-forward � trees</text>
+  <rect x="832" y="90" width="320" height="250" fill="#2c5cff"/>
+  <text x="856" y="130" fill="#fff" font-family="monospace" font-size="12">LAYER 3</text>
+  <text x="856" y="168" fill="#fff" font-family="sans-serif" font-size="22" font-weight="700">Intelligence UI</text>
+  <text x="856" y="206" fill="#e8edff" font-family="sans-serif" font-size="15">Dashboards � batch JSON</text>
+  <text x="856" y="236" fill="#e8edff" font-family="sans-serif" font-size="15">Decision-oriented views</text>
+  <path d="M368 215 H440" stroke="#111" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M760 215 H832" stroke="#111" stroke-width="3"/>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#111"/>
+    </marker>
+  </defs>
+</svg>

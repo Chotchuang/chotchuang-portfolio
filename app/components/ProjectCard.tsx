@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "../data/projects";
 
@@ -10,6 +11,17 @@ export function ProjectCard({
 }) {
   return (
     <article className="project-card">
+      {project.coverImage ? (
+        <div className="card-cover">
+          <Image
+            alt=""
+            fill
+            sizes="(max-width: 760px) 100vw, (max-width: 1180px) 50vw, 33vw"
+            src={project.coverImage}
+            unoptimized
+          />
+        </div>
+      ) : null}
       <div className="card-topline">
         <span className="card-index">{String(index + 1).padStart(2, "0")}</span>
         <span className={`status status-${project.status.toLowerCase().replace(" ", "-")}`}>

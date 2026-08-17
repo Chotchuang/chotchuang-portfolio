@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Agentic FinOps platform cover">
+  <rect width="1200" height="675" fill="#0f1115"/>
+  <text x="64" y="120" fill="#58d7e8" font-family="monospace" font-size="14" letter-spacing="4">AGENTIC FINOPS</text>
+  <text x="64" y="200" fill="#fff" font-family="sans-serif" font-size="48" font-weight="700">AI financial optimizer</text>
+  <text x="64" y="260" fill="#ccc" font-family="sans-serif" font-size="22">Cash flow � debt � investment sweeps � PDPA-aware design</text>
+  <rect x="64" y="320" width="280" height="120" fill="#171a21" stroke="#2a3140"/>
+  <text x="88" y="360" fill="#fff" font-size="18" font-weight="700">Customer journey</text>
+  <text x="88" y="395" fill="#aaa" font-size="15">Problem � value � trust</text>
+  <rect x="380" y="320" width="280" height="120" fill="#171a21" stroke="#2a3140"/>
+  <text x="404" y="360" fill="#fff" font-size="18" font-weight="700">Go-to-market</text>
+  <text x="404" y="395" fill="#aaa" font-size="15">KPIs � financial model</text>
+  <rect x="696" y="320" width="280" height="120" fill="#ff6d4a"/>
+  <text x="720" y="360" fill="#fff" font-size="18" font-weight="700">Concept only</text>
+  <text x="720" y="395" fill="#fff" font-size="15">Not a live financial product</text>
+</svg>

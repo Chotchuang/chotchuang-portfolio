@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BlueX ML Signal Research — 18 Tickers</title>
+  <style>
+    :root {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #fff8f0;
+      color: #111;
+      line-height: 1.55;
+    }
+    body { margin: 0 auto; max-width: 920px; padding: 40px 24px 64px; }
+    h1 { font-size: 2rem; letter-spacing: -0.03em; margin: 0 0 8px; }
+    .meta { color: #666; font-family: ui-monospace, monospace; font-size: 0.85rem; margin-bottom: 28px; }
+    .cards { display: grid; gap: 16px; }
+    .card {
+      border: 1px solid #ddd;
+      padding: 20px 22px;
+      background: #fff;
+    }
+    .card h2 { margin: 0 0 8px; font-size: 1.15rem; }
+    .card p { margin: 0 0 14px; color: #444; }
+    .card a {
+      color: #2c5cff;
+      font-family: ui-monospace, monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .note {
+      border-left: 3px solid #ff6d4a;
+      color: #555;
+      font-size: 0.92rem;
+      margin: 28px 0;
+      padding-left: 12px;
+    }
+    ul { padding-left: 1.2rem; }
+    footer { color: #888; font-size: 0.82rem; margin-top: 40px; }
+  </style>
+</head>
+<body>
+  <h1>BlueX ML Signal Research</h1>
+  <p class="meta">Legacy pipeline · 18 tickers · daily / 3-day / weekly · Mac tree models (no deep learning on Mac)</p>
+
+  <p class="note">
+    These pages are <strong>historical backtest evidence</strong> from the Bluexprice research stack.
+    Returns and alpha are measured on the latest ~20% holdout window. They are not live trading results
+    and not investment advice.
+  </p>
+
+  <h2>Summary tables (all timeframes)</h2>
+  <div class="cards">
+    <article class="card">
+      <h2>Ensemble (RF + XGBoost + LightGBM)</h2>
+      <p>Primary legacy model. 18 tickers × 3 timeframes with strategy return, alpha vs buy-and-hold, Sharpe, and ML accuracy.</p>
+      <a href="/work/bluex/ml/index-ensemble.html">Open ensemble summary ↗</a>
+    </article>
+    <article class="card">
+      <h2>XGBoost</h2>
+      <p>Gradient-boosted trees on TWxy/OPUS-derived features with purged walk-forward validation.</p>
+      <a href="/work/bluex/ml/index-xgboost.html">Open XGBoost summary ↗</a>
+    </article>
+    <article class="card">
+      <h2>LightGBM</h2>
+      <p>Light gradient boosting variant compared against ensemble and XGBoost on the same feature pipeline.</p>
+      <a href="/work/bluex/ml/index-lightgbm.html">Open LightGBM summary ↗</a>
+    </article>
+  </div>
+
+  <h2>Interactive drill-down</h2>
+  <ul>
+    <li><strong>Ensemble · daily</strong> — 18 Plotly dashboards (one per ticker) linked from the ensemble summary table.</li>
+    <li><strong>3-day / weekly</strong> — metrics appear in the summary tables; per-ticker HTML dashboards were not bundled in this portfolio export.</li>
+  </ul>
+
+  <h2>Universe (18 tickers)</h2>
+  <p>
+    INTC, AMD, AAPL, MU, QCOM, KO, AMZN, BA, BRK-B, CL=F, FDX, GLD, GOOGL, NFLX, NVDA, QQQ, WDC, WMT
+  </p>
+
+  <footer>
+    Source: Bluexprice <code>reports/signal_dashboard/</code> batch run (June 2026) ·
+    <a href="/project/bluex">Back to BlueX case study</a>
+  </footer>
+</body>
+</html>

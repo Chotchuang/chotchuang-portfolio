@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Financial CRM Schema Overview</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #fff8f0; color: #111; line-height: 1.55; margin: 0 auto; max-width: 820px; padding: 40px 24px; }
+    h1 { font-size: 1.7rem; }
+    code { background: #eee; padding: 2px 6px; }
+    ul { padding-left: 1.2rem; }
+  </style>
+</head>
+<body>
+  <h1>Financial CRM & Portfolio Database</h1>
+  <p>CS50 SQL final project — relational design for clients, investment orders, portfolio summaries, and loans.</p>
+  <h2>Core entities</h2>
+  <ul>
+    <li><code>users</code> — application operators</li>
+    <li><code>clients</code> — customer records</li>
+    <li><code>stocks</code> — tradable symbols</li>
+    <li><code>orders</code> — buy/sell transactions</li>
+    <li><code>portfolios</code> — aggregated holdings</li>
+    <li><code>loans</code> — lending positions and status</li>
+  </ul>
+  <h2>Design choices</h2>
+  <ul>
+    <li>Primary and foreign keys on all relationships</li>
+    <li>Indexes on lookup columns used in dashboard queries</li>
+    <li>Views for portfolio summaries and lending exposure</li>
+    <li>Triggers to keep derived totals consistent</li>
+  </ul>
+  <p>See the ER diagram in the work files for the full relationship map.</p>
+</body>
+</html>
