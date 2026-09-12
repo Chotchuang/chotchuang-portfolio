@@ -7,7 +7,7 @@ export type ProjectCategory =
 
 export type WorkFile = {
   title: string;
-  format: "PDF" | "Excel" | "HTML";
+  format: "PDF" | "Excel" | "HTML" | "Python" | "SQL";
   size: string;
   href: string;
   description: string;
@@ -219,6 +219,22 @@ export const projects: Project[] = [
         description:
           "Slack-ready weekly brief combining content health, funnel metrics, experiment readout, and ops flags.",
       },
+      {
+        title: "Content Quality Prioritization SQL",
+        format: "SQL",
+        size: "4 KB",
+        href: "/work/travel-analytics/content-quality-prioritization.sql",
+        description:
+          "DuckDB queries that size content gaps and rank public-listing improvement opportunities; no listing data is bundled.",
+      },
+      {
+        title: "Funnel & Experiment Analysis SQL",
+        format: "SQL",
+        size: "7 KB",
+        href: "/work/travel-analytics/funnel-experiment-analysis.sql",
+        description:
+          "DuckDB funnel, device, cohort, and experiment-population queries for the synthetic clickstream case; no event data is bundled.",
+      },
     ],
   },
   {
@@ -255,12 +271,52 @@ export const projects: Project[] = [
           "Executive deck connecting channel quality, mobile conversion, product mix, refunds, and budget allocation.",
       },
       {
+        title: "Capstone Evidence Summary",
+        format: "PDF",
+        size: "9 KB",
+        href: "/work/ecommerce-growth/capstone-evidence.pdf",
+        description:
+          "A portfolio-ready summary of the original capstone’s data model, SQL evidence, findings, recommendations, and limitations.",
+      },
+      {
         title: "E-commerce Budget Allocation",
         format: "Excel",
         size: "13 KB",
         href: "/work/ecommerce-growth/budget-allocation.xlsx",
         description:
           "Editable planning workbook for channel budgets, expected contribution, and decision guardrails.",
+      },
+      {
+        title: "PostgreSQL Data Model",
+        format: "SQL",
+        size: "3 KB",
+        href: "/work/ecommerce-growth/schema.sql",
+        description:
+          "Capstone schema for products, sessions, pageviews, orders, items, refunds, and analytical indexes.",
+      },
+      {
+        title: "Exploratory SQL Analysis",
+        format: "SQL",
+        size: "2 KB",
+        href: "/work/ecommerce-growth/exploratory-analysis.sql",
+        description:
+          "Initial analysis of volume, channel mix, device mix, funnel conversion, and session-to-order joins.",
+      },
+      {
+        title: "Descriptive SQL Analysis",
+        format: "SQL",
+        size: "3 KB",
+        href: "/work/ecommerce-growth/descriptive-analysis.sql",
+        description:
+          "Business-health, channel, device, refund-risk, and repeat-session analysis supporting the capstone recommendations.",
+      },
+      {
+        title: "Correlation & Metric SQL",
+        format: "SQL",
+        size: "2 KB",
+        href: "/work/ecommerce-growth/correlation-analysis.sql",
+        description:
+          "PostgreSQL analysis of session depth, conversion, repeat-session behavior, and revenue quality.",
       },
     ],
   },
@@ -369,6 +425,22 @@ export const projects: Project[] = [
         caption: "Illustrative CLI session showing filters, results, and test status.",
       },
     ],
+    files: [
+      {
+        title: "Hotel Analyzer Source Code",
+        format: "Python",
+        size: "7 KB",
+        href: "/work/hotel-analyzer/project.py",
+        description: "Complete Python source for data loading, cleaning, filtering, aggregation, and terminal output.",
+      },
+      {
+        title: "Automated Test Suite",
+        format: "Python",
+        size: "4 KB",
+        href: "/work/hotel-analyzer/test_project.py",
+        description: "Automated coverage for city search, price filtering, extrema, and grouped averages.",
+      },
+    ],
   },
   {
     slug: "financial-crm-database",
@@ -405,7 +477,14 @@ export const projects: Project[] = [
         format: "HTML",
         size: "2 KB",
         href: "/work/financial-crm/schema-overview.html",
-        description: "Short overview of entities, relationships, and design choices.",
+        description: "Short overview of the entities, relationships, constraints, views, and triggers in the final project.",
+      },
+      {
+        title: "SQLite Schema",
+        format: "SQL",
+        size: "8 KB",
+        href: "/work/financial-crm/schema.sql",
+        description: "Public-safe source schema showing tables, constraints, indexes, triggers, and reporting views. No sample client data included.",
       },
     ],
   },
@@ -437,6 +516,20 @@ export const projects: Project[] = [
         size: "302 KB",
         href: "/work/restaurant-data-model/relational-model.pdf",
         description: "UC Davis Part 2 submission — relational model and normalization rationale.",
+      },
+      {
+        title: "SQLite Schema",
+        format: "SQL",
+        size: "4 KB",
+        href: "/work/restaurant-data-model/schema.sql",
+        description: "Public-safe 3NF schema with 11 tables, primary/foreign keys, and sensitive-field classification comments.",
+      },
+      {
+        title: "Business Queries",
+        format: "SQL",
+        size: "1 KB",
+        href: "/work/restaurant-data-model/business-queries.sql",
+        description: "Monthly revenue and multi-table menu-performance queries from the final assignment.",
       },
     ],
   },
@@ -496,6 +589,16 @@ export const projects: Project[] = [
     ],
     evidence: ["15-slide completed capstone deck", "Cross-functional action plan"],
     tech: ["Business analytics", "Experimentation", "Strategy", "People analytics"],
+    files: [
+      {
+        title: "GYF Adblocker Strategy Capstone",
+        format: "PDF",
+        size: "326 KB",
+        href: "/work/adblocker-strategy-capstone.pdf",
+        description:
+          "15-slide Wharton Online Business Analytics capstone covering research, strategy, A/B-test measurement, and staffing decisions. Educational case, not company results.",
+      },
+    ],
   },
   {
     slug: "diversification-model",
@@ -517,6 +620,16 @@ export const projects: Project[] = [
     ],
     evidence: ["Excel workbooks", "Completed six-slide capstone deck"],
     tech: ["Excel", "Portfolio construction", "Risk analysis", "Financial modeling"],
+    files: [
+      {
+        title: "Diversification Model Capstone",
+        format: "PDF",
+        size: "238 KB",
+        href: "/work/diversification-model-capstone.pdf",
+        description:
+          "Six-slide historical comparison of a VBTLX/VFIAX mixed portfolio and AAPL over 2012-2015, including return, volatility, and drawdown. Educational work only, not investment advice.",
+      },
+    ],
   },
   {
     slug: "blockchain-remittance",
@@ -601,10 +714,26 @@ export const projects: Project[] = [
     ],
     evidence: ["Seven-page completed research article"],
     tech: ["Machine learning", "Portfolio optimization", "Agentic AI", "Model risk"],
+    files: [
+      {
+        title: "AI in Trading Research Guide",
+        format: "PDF",
+        size: "108 KB",
+        href: "/work/ai-algorithmic-trading-research-guide.pdf",
+        description:
+          "Seven-page educational guide on ML approaches, agentic AI, model risk, and governance. Research perspective only, not investment research or trading advice.",
+      },
+    ],
   },
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
+
+export const completedProjects = projects.filter((project) => project.status === "Complete");
+
+export const projectsInProgress = projects.filter((project) => project.status === "In progress");
+
+export const conceptProjects = projects.filter((project) => project.status === "Concept");
 
 export const projectsWithFiles = projects.filter(
   (project) => project.files && project.files.length > 0,

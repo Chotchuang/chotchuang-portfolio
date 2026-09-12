@@ -4,6 +4,8 @@ import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import { projectsWithFiles, workFiles } from "../data/projects";
 
+const workFileFormats = new Set(workFiles.map((file) => file.format)).size;
+
 export const metadata: Metadata = {
   title: "Work Files",
   description:
@@ -34,7 +36,7 @@ export default function WorkFilesPage() {
               <strong>{projectsWithFiles.length}</strong> case studies
             </span>
             <span>
-              <strong>3</strong> formats
+              <strong>{workFileFormats}</strong> formats
             </span>
           </div>
         </section>

@@ -31,6 +31,11 @@ test("renders the portfolio home page", async () => {
   assert.match(html, /Chotchuang/i);
   assert.match(html, /decisions people can act on/i);
   assert.match(html, /Explore my work/i);
+  assert.match(html, /Completed work/i);
+  assert.match(html, /Merchant Growth/i);
+  assert.match(html, /Financial CRM/i);
+  assert.match(html, /Build in progress/i);
+  assert.match(html, /Concept &amp; Research/i);
   assert.doesNotMatch(html, /codex-preview/i);
   assert.doesNotMatch(html, /react-loading-skeleton/i);
 });

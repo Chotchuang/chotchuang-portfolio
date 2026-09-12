@@ -2,7 +2,12 @@ import Link from "next/link";
 import { ProjectCard } from "./components/ProjectCard";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
-import { featuredProjects, projects } from "./data/projects";
+import {
+  completedProjects,
+  conceptProjects,
+  projects,
+  projectsInProgress,
+} from "./data/projects";
 
 export default function Home() {
   return (
@@ -55,31 +60,59 @@ export default function Home() {
             <span>projects curated</span>
           </div>
           <div>
-            <strong>{featuredProjects.length}</strong>
-            <span>flagship cases</span>
+            <strong>{completedProjects.length}</strong>
+            <span>completed cases</span>
           </div>
           <div>
-            <strong>5</strong>
-            <span>decision domains</span>
+            <strong>{projectsInProgress.length}</strong>
+            <span>active builds</span>
           </div>
           <div>
-            <strong>1</strong>
-            <span>clear point of view</span>
+            <strong>{conceptProjects.length}</strong>
+            <span>concepts & research</span>
           </div>
         </section>
 
         <section className="section" id="work">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">SELECTED WORK</p>
-              <h2>Built to answer a decision, not decorate a dashboard.</h2>
+              <p className="eyebrow">COMPLETED WORK</p>
+              <h2>Every completed case, ready to inspect.</h2>
             </div>
             <Link className="text-link section-link" href="/project">
-              View all {projects.length} projects <span aria-hidden="true">→</span>
+              Browse all {projects.length} projects <span aria-hidden="true">→</span>
             </Link>
           </div>
           <div className="project-grid featured-grid">
-            {featuredProjects.map((project, index) => (
+            {completedProjects.map((project, index) => (
+              <ProjectCard index={index} key={project.slug} project={project} />
+            ))}
+          </div>
+        </section>
+
+        <section className="section" id="builds">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">BUILD IN PROGRESS</p>
+              <h2>Work being completed with the same evidence standard.</h2>
+            </div>
+          </div>
+          <div className="project-grid">
+            {projectsInProgress.map((project, index) => (
+              <ProjectCard index={index} key={project.slug} project={project} />
+            ))}
+          </div>
+        </section>
+
+        <section className="section" id="research">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">CONCEPT & RESEARCH</p>
+              <h2>Proposals and research, clearly separate from completed builds.</h2>
+            </div>
+          </div>
+          <div className="project-grid">
+            {conceptProjects.map((project, index) => (
               <ProjectCard index={index} key={project.slug} project={project} />
             ))}
           </div>
