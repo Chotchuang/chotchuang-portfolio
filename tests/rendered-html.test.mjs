@@ -94,3 +94,32 @@ test("renders travel case with weekly ops brief", async () => {
   assert.match(html, /Weekly Product Ops Brief/i);
   assert.doesNotMatch(html, /D0[1-9]/i);
 });
+
+test("renders travel as four equal cases with evidence labels", async () => {
+  const response = await render("/project/travel-product-analytics");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /Content Quality Audit/);
+  assert.match(html, /Conversion Funnel &amp; Experiment|Conversion Funnel & Experiment/);
+  assert.match(html, /Weekly Product Operations/);
+  assert.match(html, /Bangkok Content Operations Platform/);
+
+  assert.match(html, /Public source \+ derived metrics; proxy opportunity estimate/);
+  assert.match(html, /Synthetic clickstream \+ simulated experiment/);
+  assert.match(html, /Derived portfolio package \+ simulated workflow/);
+  assert.match(
+    html,
+    /Public-source analogue \+ derived metrics \+ simulated workflow/,
+  );
+
+  assert.match(html, /DO NOT SHIP/);
+  assert.match(html, /8,908 annual-review estimate is a proxy/);
+  assert.match(html, /No real user behavior or realized lift is represented/);
+  assert.match(html, /no verified time-saving claim/i);
+  assert.match(html, /not Agoda data or workflow/);
+
+  assert.doesNotMatch(html, /three-part/i);
+  assert.doesNotMatch(html, /flagship/i);
+  assert.doesNotMatch(html, /300K\+/i);
+});
