@@ -142,6 +142,41 @@ export default async function ProjectDetail({ params }: ProjectPageProps) {
                 <p className="eyebrow">THE DECISION</p>
                 <h2>{project.decision}</h2>
               </section>
+              {project.travelCases?.length ? (
+                <section aria-label="Four equal Travel cases">
+                  <p className="eyebrow">FOUR EQUAL CASES</p>
+                  <h2>
+                    Each case carries its own decision, evidence label, finding,
+                    action, and limitation.
+                  </h2>
+                  <div className="case-file-list">
+                    {project.travelCases.map((travelCase, index) => (
+                      <article className="case-file" key={travelCase.name}>
+                        <div className="file-badge">{index + 1}</div>
+                        <div>
+                          <h3>{travelCase.name}</h3>
+                          <p>
+                            <strong>Decision.</strong> {travelCase.decision}
+                          </p>
+                          <p>
+                            <strong>Evidence label.</strong>{" "}
+                            {travelCase.evidenceLabel}
+                          </p>
+                          <p>
+                            <strong>Finding.</strong> {travelCase.finding}
+                          </p>
+                          <p>
+                            <strong>Action.</strong> {travelCase.action}
+                          </p>
+                          <p>
+                            <strong>Limitation.</strong> {travelCase.limitation}
+                          </p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
               <section>
                 <p className="eyebrow">APPROACH</p>
                 <ol className="case-list">

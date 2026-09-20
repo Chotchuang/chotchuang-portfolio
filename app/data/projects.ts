@@ -19,6 +19,16 @@ export type ProjectGalleryImage = {
   caption: string;
 };
 
+/** Travel-only equal-case cards (WO-008A). Other projects omit this field. */
+export type TravelCase = {
+  name: string;
+  decision: string;
+  evidenceLabel: string;
+  finding: string;
+  action: string;
+  limitation: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -38,6 +48,7 @@ export type Project = {
   liveUrl?: string;
   githubUrl?: string;
   files?: WorkFile[];
+  travelCases?: TravelCase[];
 };
 
 export const projects: Project[] = [
@@ -177,21 +188,22 @@ export const projects: Project[] = [
     status: "Complete",
     disclosure: "Public listings + synthetic clickstream · Proxy and simulated impact",
     summary:
-      "A three-part travel marketplace case connecting content quality, experiment design, and weekly product operations.",
+      "Four equal travel-marketplace cases: content triage, funnel experiment, weekly ops packaging, and public-source readiness operations.",
     decision:
-      "Which property-content gaps should be fixed first, how should impact be tested, and what should the operating cadence monitor?",
+      "Which content gaps, experiment readout, weekly exceptions, and readiness tickets should a Product Ops analyst act on first—under explicit evidence labels?",
     role:
-      "Sole analyst across content scoring, funnel experimentation, and the weekly ops automation that stitches both workstreams together.",
+      "Sole analyst across content scoring, funnel experimentation, weekly ops packaging, and the Bangkok content-operations platform case.",
     methods: [
-      "Designed a four-dimension Content Quality Score",
-      "Ranked the backlog with RICE and business-impact proxies",
-      "Built funnel SQL, power analysis, and a randomized A/B readout",
-      "Automated a weekly operations report with anomaly flags",
+      "Scored public Bangkok listings and ranked a content backlog with demand proxies",
+      "Built synthetic funnel SQL and a simulated PDP experiment readout",
+      "Packaged P1/P2 outputs into a derived weekly ops demonstration",
+      "Modeled public-source readiness issues with a simulated ticket/SLA layer",
     ],
     evidence: [
-      "23,233 public Bangkok listings assessed",
-      "11,480-listing prioritized content backlog",
-      "Dashboard package, experiment readout, and weekly brief",
+      "11,480 of 23,233 listings below provisional content score 70 (derived)",
+      "25,000 sessions / 77,096 events; simulated experiment decision DO NOT SHIP",
+      "Weekly ops package reconciles P1 content and P2 funnel/experiment outputs",
+      "14,551 of 31,069 listings below provisional readiness score 70 (derived)",
     ],
     tech: ["Python", "SQL", "Experimentation", "Tableau", "Automation"],
     coverImage: "/work/travel-analytics/cover-funnel.svg",
@@ -200,6 +212,50 @@ export const projects: Project[] = [
         src: "/work/travel-analytics/cover-funnel.svg",
         alt: "OTA funnel dashboard KPI preview",
         caption: "Synthetic Bangkok funnel dashboard with experiment decision surfaced.",
+      },
+    ],
+    travelCases: [
+      {
+        name: "Content Quality Audit",
+        decision: "Which public-listing content gaps should be addressed first?",
+        evidenceLabel:
+          "Public source + derived metrics; proxy opportunity estimate",
+        finding: "11,480 of 23,233 listings are below provisional score 70",
+        action:
+          "Prioritize the ranked backlog; validate outcome with an experiment",
+        limitation:
+          "The 8,908 annual-review estimate is a proxy, not booking, revenue, or causal impact",
+      },
+      {
+        name: "Conversion Funnel & Experiment",
+        decision: "Should the PDP intervention ship?",
+        evidenceLabel: "Synthetic clickstream + simulated experiment",
+        finding:
+          "25,000 sessions, 77,096 events; simulated result is DO NOT SHIP",
+        action: "Keep the control and redesign before retesting",
+        limitation: "No real user behavior or realized lift is represented",
+      },
+      {
+        name: "Weekly Product Operations",
+        decision: "What exceptions need an owner in the next weekly cadence?",
+        evidenceLabel: "Derived portfolio package + simulated workflow",
+        finding: "Reconciles P1 content and P2 funnel/experiment outputs",
+        action:
+          "Assign owners to the action queue and review exceptions weekly",
+        limitation:
+          "Illustrative WoW and workflow; no verified time-saving claim",
+      },
+      {
+        name: "Bangkok Content Operations Platform",
+        decision:
+          "Which public-source readiness issues should enter the ticket queue?",
+        evidenceLabel:
+          "Public-source analogue + derived metrics + simulated workflow",
+        finding:
+          "14,551 of 31,069 listings are below provisional readiness score 70",
+        action: "Triage the simulated ticket queue by priority and SLA",
+        limitation:
+          "Airbnb/OSM analogue, provisional threshold, and simulated ticket/SLA fields; not Agoda data or workflow",
       },
     ],
     files: [
