@@ -1,0 +1,14 @@
+%% Weekly run steps
+%% Caption: Every step inside one command.
+%% Truth: process only
+flowchart TD
+  S0([เริ่ม: scripts/run_once.py]) --> S1[อ่าน config YAML]
+  S1 --> S2[อ่าน current week JSON]
+  S2 --> S3{prior มีและครบ metric ids?}
+  S3 -->|ใช่| S4[โหลด prior + คำนวณ WoW deltas]
+  S3 -->|ไม่ / --no-prior| S5[ติดป้าย WoW unavailable<br/>ไม่สร้าง trend ปลอม]
+  S4 --> S6[เช็คเป้า KPI + ธง anomaly]
+  S5 --> S6
+  S6 --> S7[traffic lights → owner actions]
+  S7 --> S8[เขียน report + brief + flags + lineage]
+  S8 --> S9([จบ: ไฟล์ใน output/])

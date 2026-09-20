@@ -107,10 +107,16 @@ These files are intentionally public:
 | BlueX | `public/work/bluex/cover-momentum-chart.svg` | SVG |
 | BlueX | `public/work/bluex/architecture.svg` | SVG |
 | BlueX | `public/work/bluex/ml-signal-research.html` | HTML hub |
+| BlueX | `public/work/bluex/current-hub.html` | HTML current HUD |
+| BlueX | `public/work/bluex/current/**` | HTML stats/subplot/anova |
+| BlueX | `public/work/bluex/recruiter-decision-dashboard.html` | HTML |
 | BlueX | `public/work/bluex/ml/index-ensemble.html` | HTML |
 | BlueX | `public/work/bluex/ml/index-xgboost.html` | HTML |
 | BlueX | `public/work/bluex/ml/index-lightgbm.html` | HTML |
-| BlueX | `public/work/bluex/ml/dashboards/*_signal_daily_ensemble.html` | HTML (18 tickers) |
+| BlueX | `public/work/bluex/ml/index-mlp.html` | HTML |
+| BlueX | `public/work/bluex/ml/compare_*.html` | HTML |
+| BlueX | `public/work/bluex/ml/capital-sets/*.html` | HTML (NFLX sample) |
+| BlueX | `public/work/bluex/ml/dashboards/*_signal_daily_ensemble.html` | HTML (18 tickers, scrubbed) |
 | Merchant Growth & Fintech Profitability | `public/work/merchant-growth/strategy-deck.pdf` | PDF |
 | Merchant Growth & Fintech Profitability | `public/work/merchant-growth/unit-economics.xlsx` | Excel |
 | Merchant Growth & Fintech Profitability | `public/work/merchant-growth/dashboard.html` | HTML |
@@ -126,6 +132,9 @@ These files are intentionally public:
 | Restaurant Data Model | `public/work/restaurant-data-model/relational-model.pdf` | PDF |
 | Hotel Analyzer | `public/work/hotel-analyzer/cli-demo.svg` | SVG |
 | Daily Intel Hub | `public/work/daily-intel-hub/architecture.svg` | SVG |
+| Weekly Ops Kit diagrams | `public/work/weekly-ops-kit/index.html` | HTML gallery (Mermaid preview → full) |
+| Weekly Ops Kit diagrams | `public/work/weekly-ops-kit/full.html` | HTML full diagram view |
+| Weekly Ops Kit diagrams | `public/work/weekly-ops-kit/source/*.mmd` | Mermaid sources |
 
 The public URL mirrors the path below `public`. For example:
 
@@ -157,14 +166,14 @@ The case-study route is generated automatically at `/project/<slug>`.
 1. Confirm that the owner intends the exact file to be public.
 2. Make a safe copy; never publish the only private original.
 3. Place it under `public/work/<project-name>/`.
-4. Use a descriptive lowercase filename with hyphens.
+4. Follow [`../PUBLIC_NAMING_STANDARD.md`](../PUBLIC_NAMING_STANDARD.md): use a short, descriptive lowercase filename with hyphens, and a matching plain-language public title. Do not use work-order IDs, timestamps, phase labels, build numbers, or generated shorthand in anything a visitor sees or downloads.
 5. Add its title, format, size, URL, and plain-language description to the
    project's `files` array in `app/data/projects.ts`.
 6. Add the asset path to `requiredFiles` in
    `scripts/verify-pages-build.mjs`.
 7. Add or update a rendered-content assertion when the public title or route is
    important.
-8. Build both targets and test the live download after deployment.
+8. Build both targets and check the rendered title and downloaded filename after deployment.
 
 Keep public files small and browser-friendly. Cloudflare Pages checks currently
 enforce a maximum of 25 MiB per file and 20,000 files per deployment.

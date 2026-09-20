@@ -1,0 +1,9 @@
+%% Content quality workflow
+%% Caption: Score → validate → prioritize → operationalize.
+%% Truth: public Bangkok listings + derived score + modelled review proxy
+flowchart LR
+  P0[Phase 0–1<br/>Ingest / clean] --> P2[Phase 2<br/>Score + tiers]
+  P2 --> P3[Phase 3<br/>Stats / association]
+  P3 --> P4[Phase 4<br/>RICE backlog]
+  P4 --> P5[Phase 5<br/>Ops playbook]
+  P5 --> P6[Phase 6<br/>Reports + dashboard]

@@ -1,0 +1,31 @@
+%% Data to report
+%% Caption: Inputs → validate → compare → render → outputs. No invented numbers.
+%% Truth: sample path uses data/sample/*.json
+flowchart LR
+  subgraph IN["Inputs"]
+    C[config/kit_config.yaml<br/>targets · thresholds · owners]
+    W1[current_week.json<br/>metrics · highlights · actions]
+    W0[prior_week.json<br/>optional]
+  end
+
+  subgraph ENG["Engine"]
+    L[load + schema check]
+    X[compare: targets + WoW]
+    R[render markdown + brief]
+  end
+
+  subgraph OUT["Outputs"]
+    O1[weekly_report_latest.md]
+    O2[slack_brief_latest.txt]
+    O3[anomaly_flags.json]
+    O4[lineage.json]
+  end
+
+  C --> L
+  W1 --> L
+  W0 --> L
+  L --> X --> R
+  R --> O1
+  R --> O2
+  R --> O3
+  R --> O4

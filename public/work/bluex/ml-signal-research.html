@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BlueX ML Signal Research — 18 Tickers</title>
+  <title>BlueX Research Overview</title>
   <style>
     :root {
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -41,48 +41,68 @@
   </style>
 </head>
 <body>
-  <h1>BlueX ML Signal Research</h1>
-  <p class="meta">Legacy pipeline · 18 tickers · daily / 3-day / weekly · Mac tree models (no deep learning on Mac)</p>
+  <h1>BlueX Research Overview</h1>
+  <p class="meta">Public-safe package · scrubbed metrics &amp; UI · not trading advice</p>
 
   <p class="note">
-    These pages are <strong>historical backtest evidence</strong> from the Bluexprice research stack.
-    Returns and alpha are measured on the latest ~20% holdout window. They are not live trading results
-    and not investment advice.
+    These pages show <strong>historical backtest and display evidence</strong> only.
+    Private formulas, feature recipes, and source code are not included.
+    Public light codes use <code>L####</code> / <code>G##</code> naming where applicable.
   </p>
 
-  <h2>Summary tables (all timeframes)</h2>
+  <h2>Current signals</h2>
   <div class="cards">
     <article class="card">
-      <h2>Ensemble (RF + XGBoost + LightGBM)</h2>
-      <p>Primary legacy model. 18 tickers × 3 timeframes with strategy return, alpha vs buy-and-hold, Sharpe, and ML accuracy.</p>
-      <a href="/work/bluex/ml/index-ensemble.html">Open ensemble summary ↗</a>
+      <h2>Current signal overview</h2>
+      <p>Signal summaries, a chart, and a statistical check using public codes only.</p>
+      <a href="/work/bluex/current-hub.html">Open current signals ↗</a>
     </article>
     <article class="card">
-      <h2>XGBoost</h2>
-      <p>Gradient-boosted trees on TWxy/OPUS-derived features with purged walk-forward validation.</p>
-      <a href="/work/bluex/ml/index-xgboost.html">Open XGBoost summary ↗</a>
-    </article>
-    <article class="card">
-      <h2>LightGBM</h2>
-      <p>Light gradient boosting variant compared against ensemble and XGBoost on the same feature pipeline.</p>
-      <a href="/work/bluex/ml/index-lightgbm.html">Open LightGBM summary ↗</a>
+      <h2>Signal summaries</h2>
+      <p>Per-symbol on/off rates after warmup on a ~10-year window.</p>
+      <a href="/work/bluex/current/stats/index.html">Open signal summaries ↗</a>
     </article>
   </div>
 
-  <h2>Interactive drill-down</h2>
+  <h2>Model results</h2>
+  <div class="cards">
+    <article class="card">
+      <h2>Ensemble model</h2>
+      <p>Summary across tickers and timeframes, with linked daily detail.</p>
+      <a href="/work/bluex/ml/index-ensemble.html">Open ensemble results ↗</a>
+    </article>
+    <article class="card">
+      <h2>XGBoost · LightGBM · MLP</h2>
+      <p>Comparable model metrics on the same holdout framing.</p>
+      <a href="/work/bluex/ml/index-xgboost.html">XGBoost ↗</a>
+      ·
+      <a href="/work/bluex/ml/index-lightgbm.html">LightGBM ↗</a>
+      ·
+      <a href="/work/bluex/ml/index-mlp.html">MLP ↗</a>
+    </article>
+    <article class="card">
+      <h2>Model comparison</h2>
+      <p>Side-by-side model comparison tables without private feature identifiers.</p>
+      <a href="/work/bluex/ml/compare_all_models.html">Open compare-all ↗</a>
+    </article>
+  </div>
+
+  <h2>Additional public-safe views</h2>
   <ul>
-    <li><strong>Ensemble · daily</strong> — 18 Plotly dashboards (one per ticker) linked from the ensemble summary table.</li>
-    <li><strong>3-day / weekly</strong> — metrics appear in the summary tables; per-ticker HTML dashboards were not bundled in this portfolio export.</li>
+    <li><a href="/work/bluex/ml/capital-sets/index.html">Capital results (NFLX sample)</a></li>
+    <li><a href="/work/bluex/recruiter-decision-dashboard.html">Recruiter decision dashboard</a></li>
+    <li><strong>Daily ensemble dashboards</strong> — linked from the ensemble summary table (18 tickers).</li>
   </ul>
 
-  <h2>Universe (18 tickers)</h2>
+  <h2>Universe</h2>
   <p>
     INTC, AMD, AAPL, MU, QCOM, KO, AMZN, BA, BRK-B, CL=F, FDX, GLD, GOOGL, NFLX, NVDA, QQQ, WDC, WMT
+    (+ META in current stats)
   </p>
 
   <footer>
-    Source: Bluexprice <code>reports/signal_dashboard/</code> batch run (June 2026) ·
-    <a href="/project/bluex">Back to BlueX case study</a>
+    Portfolio evidence only · scrubbed public package · not investment advice ·
+    <a href="/project/bluex">← BlueX case study</a>
   </footer>
 </body>
 </html>

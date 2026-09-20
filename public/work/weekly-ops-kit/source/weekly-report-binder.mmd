@@ -1,0 +1,25 @@
+%% Weekly report binder
+%% Caption: P3 clips verified P1+P2 sheets; does not invent facts.
+%% Truth: derived weekly demo from upstream artifacts
+flowchart TB
+  subgraph UP["Upstream artifacts"]
+    A1[P1 scoring / RICE / tiers]
+    A2[P2 funnel / experiment readout]
+  end
+
+  subgraph P3["P3 Weekly Ops Report"]
+    C1[collect_p1 + collect_p2]
+    C2[load prior snapshot]
+    C3[WoW compare + anomaly flags]
+    C4[report + Slack-style brief<br/>+ lineage + recruiter package]
+  end
+
+  subgraph GATE["Contract"]
+    G1{artifacts ครบ?}
+    G2[missing-data / invalid-data]
+  end
+
+  A1 --> G1
+  A2 --> G1
+  G1 -->|ไม่| G2
+  G1 -->|ใช่| C1 --> C2 --> C3 --> C4

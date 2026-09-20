@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weekly Ops Diagrams</title>
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --ink: #1c1917;
+      --muted: #78716c;
+      --card: #ffffff;
+      --line: #e7e5e4;
+      --accent: #0f766e;
+      --accent-soft: #ccfbf1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #d9f3ee 0%, transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, #fde68a33 0%, transparent 50%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    header { margin-bottom: 1.75rem; }
+    .eyebrow {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 3vw, 2.35rem);
+      font-weight: 600;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .lede { color: var(--muted); max-width: 42rem; margin: 0; font-size: 1.05rem; }
+    .note {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--accent-soft);
+      border-radius: 8px;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.875rem;
+      color: #115e59;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+    article.card {
+      display: flex;
+      flex-direction: column;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 300px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    article.card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(28, 25, 23, 0.08);
+    }
+    .card-meta { padding: 0.9rem 1rem 0.35rem; font-family: ui-sans-serif, system-ui, sans-serif; }
+    .card-id {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .card-title {
+      margin: 0.2rem 0 0;
+      font-size: 1.05rem;
+      font-family: Georgia, serif;
+      font-weight: 600;
+    }
+    .card-caption { margin: 0.35rem 0 0; font-size: 0.8rem; color: var(--muted); }
+    .preview-box {
+      flex: 1;
+      margin: 0.5rem 0.75rem;
+      padding: 0.75rem;
+      background: #fafaf9;
+      border-radius: 8px;
+      border: 1px dashed var(--line);
+      overflow: auto;
+      min-height: 180px;
+      max-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .preview-box .mermaid,
+    .preview-box svg {
+      max-width: 100%;
+      height: auto;
+    }
+    .preview-box svg { transform: scale(0.85); transform-origin: center center; }
+    .cta-row {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0 1rem 1rem;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.8rem;
+    }
+    .cta-row a {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .cta-row a:hover { text-decoration: underline; }
+    .cta-row a.secondary { font-weight: 500; color: var(--muted); }
+    footer {
+      margin-top: 2.5rem;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--accent); }
+    .status {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">Runnable kit · Diagram gallery</p>
+      <h1>Weekly Ops Diagrams</h1>
+      <p class="lede">
+        การ์ดด้านล่างคือภาพย่อ กด <strong>เปิดเต็ม</strong> เพื่อดู diagram ขนาดเต็มบนหน้าเว็บ
+        หรือกด <strong>ไฟล์ .mmd</strong> เพื่อดูต้นฉบับ
+      </p>
+      <p class="note">
+        Sample / process diagrams เท่านั้น — ไม่ใช่ Agoda production ·
+        Kit ไม่สร้างตัวเลขปลอมเมื่อไฟล์หาย
+      </p>
+      <p class="status" id="status">กำลังโหลด Mermaid…</p>
+    </header>
+
+    <div class="grid" id="gallery"></div>
+
+    <footer>
+      <a href="./diagram-notes.md">คำอธิบาย diagrams</a>
+      · <a href="./diagrams/all-diagrams.md">ดู diagrams ทั้งหมด</a>
+      · <span>ไฟล์ Mermaid ต้นฉบับ:</span>
+      <a href="./source/">source/</a>
+    </footer>
+  </div>
+
+  <script src="./diagrams-data.js"></script>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: "neutral",
+      securityLevel: "loose",
+      flowchart: { htmlLabels: true, curve: "basis" },
+    });
+
+    const gallery = document.getElementById("gallery");
+    const status = document.getElementById("status");
+
+    function sanitize(src) {
+      // Drop classDef / class lines that sometimes fail in thumbnail context
+      return src
+        .split("\n")
+        .filter((line) => !/^\s*classDef\b/.test(line) && !/^\s*class\s+\w+/.test(line))
+        .join("\n");
+    }
+
+    DIAGRAMS.forEach((d) => {
+      const article = document.createElement("article");
+      article.className = "card";
+      article.innerHTML = `
+        <div class="card-meta">
+          <div class="card-id">${d.id}</div>
+          <h2 class="card-title">${d.title}</h2>
+          <p class="card-caption">${d.caption}</p>
+        </div>
+        <div class="preview-box">
+          <div class="mermaid" id="m-${d.id}"></div>
+        </div>
+        <div class="cta-row">
+          <a href="./full.html?id=${encodeURIComponent(d.id)}">เปิดเต็ม →</a>
+          <a class="secondary" data-source="${encodeURIComponent(d.file)}">ไฟล์ Mermaid ต้นฉบับ</a>
+        </div>
+      `;
+      article.querySelector(".secondary").href = `./source/${article.querySelector(".secondary").dataset.source}`;
+      article.querySelector(`#m-${d.id}`).textContent = sanitize(d.mermaid);
+      gallery.appendChild(article);
+    });
+
+    try {
+      await mermaid.run({ querySelector: ".mermaid" });
+      status.textContent = `${DIAGRAMS.length} diagrams พร้อมแล้ว — กด “เปิดเต็ม” เพื่อดูขนาดเต็ม`;
+    } catch (err) {
+      status.textContent = "บาง diagram เรนเดอร์ไม่สำเร็จ — ยังกดเปิดเต็ม / ไฟล์ .mmd ได้";
+      console.error(err);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+%% Stop on missing data
+%% Caption: Missing or invalid inputs stop the run; no substitute metrics.
+%% Truth: process / contract
+flowchart TD
+  A[อ่านไฟล์] --> B{ไฟล์มีจริง?}
+  B -->|ไม่| E1[missing-data: …<br/>exit ≠ 0]
+  B -->|ใช่| C{JSON/YAML parse ได้?<br/>คีย์จำเป็นครบ?}
+  C -->|ไม่| E2[invalid-data: …<br/>exit ≠ 0]
+  C -->|ใช่| D{metric ids ตรง config?}
+  D -->|ไม่| E2
+  D -->|ใช่| F[เดิน pipeline ต่อ]
+  E1 --> Z([หยุด — ไม่เขียนตัวเลขปลอม])
+  E2 --> Z
+  F --> G([เขียน output ตามจริง])

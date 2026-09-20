@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Weekly Ops Diagram</title>
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --ink: #1c1917;
+      --muted: #78716c;
+      --card: #ffffff;
+      --line: #e7e5e4;
+      --accent: #0f766e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .bar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.25rem;
+      background: rgba(247, 244, 239, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+      font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    .bar a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    .bar a:hover { text-decoration: underline; }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 1.5rem 1.25rem 3rem; }
+    .eyebrow {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0 0 0.35rem;
+    }
+    h1 { margin: 0 0 0.4rem; font-size: clamp(1.5rem, 2.5vw, 2rem); }
+    .caption { color: var(--muted); margin: 0 0 1rem; max-width: 42rem; }
+    .truth {
+      display: inline-block;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.75rem;
+      background: #ecfdf5;
+      color: #115e59;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .stage {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1.5rem;
+      overflow: auto;
+      min-height: 360px;
+    }
+    .stage .mermaid, .stage svg { display: block; margin: 0 auto; max-width: 100%; }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.25rem;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 0.875rem;
+    }
+    .nav a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .err {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      color: #b91c1c;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <a href="./index.html">← กลับไปที่รายการ diagrams</a>
+    <div class="actions">
+      <a id="src-link" href="#">ดูไฟล์ต้นทาง .mmd</a>
+      <a href="./diagrams/all-diagrams.md">ดู diagrams ทั้งหมด</a>
+    </div>
+  </div>
+
+  <div class="wrap" id="main">
+    <p class="eyebrow" id="did">—</p>
+    <h1 id="title">Loading…</h1>
+    <p class="caption" id="caption"></p>
+    <span class="truth" id="truth"></span>
+    <div class="stage"><div class="mermaid" id="chart"></div></div>
+    <div class="nav">
+      <a id="prev" href="#">← ก่อนหน้า</a>
+      <a id="next" href="#">ถัดไป →</a>
+    </div>
+  </div>
+
+  <script src="./diagrams-data.js"></script>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: "neutral",
+      securityLevel: "loose",
+      flowchart: { htmlLabels: true, curve: "basis" },
+      sequence: { actorMargin: 28 },
+    });
+
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id") || "kit-vs-showcase";
+    const idx = DIAGRAMS.findIndex((d) => d.id === id);
+    const d = idx >= 0 ? DIAGRAMS[idx] : null;
+
+    if (!d) {
+      document.getElementById("main").innerHTML =
+        `<p class="err">ไม่พบ diagram id=${id}. <a href="./index.html">กลับ gallery</a></p>`;
+    } else {
+      document.title = d.title;
+      document.getElementById("did").textContent = "Weekly Ops Report";
+      document.getElementById("title").textContent = d.title;
+      document.getElementById("caption").textContent = d.caption;
+      document.getElementById("truth").textContent = d.truth;
+      document.getElementById("chart").textContent = d.mermaid;
+
+      const src = document.getElementById("src-link");
+      src.href = `./source/${d.file}`;
+      src.textContent = "ดูไฟล์ Mermaid ต้นฉบับ";
+
+      const prev = DIAGRAMS[(idx - 1 + DIAGRAMS.length) % DIAGRAMS.length];
+      const next = DIAGRAMS[(idx + 1) % DIAGRAMS.length];
+      document.getElementById("prev").href = `./full.html?id=${prev.id}`;
+      document.getElementById("prev").textContent = `← ${prev.title}`;
+      document.getElementById("next").href = `./full.html?id=${next.id}`;
+      document.getElementById("next").textContent = `${next.title} →`;
+
+      await mermaid.run({ nodes: [document.getElementById("chart")] });
+    }
+  </script>
+</body>
+</html>

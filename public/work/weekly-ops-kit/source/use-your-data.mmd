@@ -1,0 +1,11 @@
+%% Use your data
+%% Caption: Three edits turn the sample kit into another domain's weekly rhythm.
+%% Truth: process
+flowchart TD
+  U0([Clone / เปิดโฟลเดอร์ kit]) --> U1[คัดลอก data/sample → data/]
+  U1 --> U2[แก้ current_week.json<br/>ใส่ตัวเลขโดเมนตัวเอง]
+  U2 --> U3[แก้ prior_week.json<br/>หรือข้ามถ้ายังไม่มี]
+  U3 --> U4[แก้ kit_config.yaml<br/>เป้า · ธง · ชื่อเจ้าของ · ช่อง]
+  U4 --> U5["รัน: python scripts/run_once.py<br/>--current … --prior …"]
+  U5 --> U6[ได้รายงานประจำสัปดาห์ของโดเมนนั้น]
+  U6 --> U7[วาง brief ในแชททีม / standup]

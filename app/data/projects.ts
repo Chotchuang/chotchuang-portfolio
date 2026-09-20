@@ -48,7 +48,8 @@ export const projects: Project[] = [
     category: "Finance & AI",
     featured: true,
     status: "In progress",
-    disclosure: "Proprietary research system · Active build · Not trading advice",
+    disclosure:
+      "Proprietary research system · Public pages are scrubbed metrics/UI only · Not trading advice",
     summary:
       "A systematic momentum-scoring and portfolio-research platform that turns multi-timeframe signals into evidence-led decisions for portfolio management.",
     decision:
@@ -57,49 +58,79 @@ export const projects: Project[] = [
       "End-to-end analyst and builder: indicator design, CSV pipeline, validation, ML experiments, and the public intelligence-board interface.",
     methods: [
       "Built a single canonical producer for multi-timeframe feature CSVs",
-      "Designed TWxy/OPUS momentum families with ANOVA validation",
+      "Validated momentum families with ANOVA-style checks on decision labels",
       "Ran tree/sklearn research and walk-forward checks on Mac; DL on RunPod only",
-      "Translated the research layer into an interactive intelligence board",
+      "Published a scrubbed public package: renamed light codes, remodel summaries, and UI evidence",
     ],
     evidence: [
-      "Working intelligence board with portfolio-oriented views",
-      "Legacy ML remodel: ensemble, XGBoost, and LightGBM across 18 tickers",
-      "18 interactive daily ensemble dashboards with Plotly drill-down",
-      "Core research codebase remains proprietary; public case shows workflow and UI",
+      "Current HUD stats/subplot/ANOVA pilot using public L#### / G## codes",
+      "Prior ML remodel summaries: ensemble, XGBoost, LightGBM, and MLP",
+      "18 scrubbed daily ensemble dashboards with Plotly drill-down",
+      "Core research codebase remains proprietary; public case shows workflow and UI only",
     ],
     tech: ["Python", "React", "Machine learning", "Backtesting", "Portfolio analytics"],
     files: [
       {
-        title: "ML Signal Research Hub",
+        title: "Research Overview",
         format: "HTML",
         size: "4 KB",
         href: "/work/bluex/ml-signal-research.html",
         description:
-          "Entry point for the June 2026 legacy pipeline: 18 tickers, three models, summary tables and daily ensemble dashboards.",
+          "Public-safe entry point for current HUD links, remodel summaries, model compare, and capital-set sample.",
       },
       {
-        title: "Ensemble Summary (18 × 3 timeframes)",
+        title: "Current Signal Overview",
         format: "HTML",
-        size: "17 KB",
+        size: "5 KB",
+        href: "/work/bluex/current-hub.html",
+        description:
+          "Current lights layer with public codes only — stats, NFLX subplot, and ANOVA pilot.",
+      },
+      {
+        title: "Ensemble Summary",
+        format: "HTML",
+        size: "10 KB",
         href: "/work/bluex/ml/index-ensemble.html",
         description:
-          "Strategy return, alpha vs buy-and-hold, Sharpe, and ML accuracy for the ensemble model.",
+          "Strategy return, alpha vs buy-and-hold, Sharpe, and ML accuracy for the ensemble remodel.",
       },
       {
         title: "XGBoost Summary",
         format: "HTML",
-        size: "15 KB",
+        size: "16 KB",
         href: "/work/bluex/ml/index-xgboost.html",
         description:
-          "Gradient-boosted tree results on the same TWxy/OPUS feature pipeline and holdout window.",
+          "Gradient-boosted remodel metrics on the same holdout framing as the other tree models.",
       },
       {
         title: "LightGBM Summary",
         format: "HTML",
-        size: "15 KB",
+        size: "16 KB",
         href: "/work/bluex/ml/index-lightgbm.html",
         description:
           "LightGBM remodel metrics compared against ensemble and XGBoost on identical splits.",
+      },
+      {
+        title: "MLP Summary",
+        format: "HTML",
+        size: "15 KB",
+        href: "/work/bluex/ml/index-mlp.html",
+        description: "MLP remodel summary table for the same ticker universe.",
+      },
+      {
+        title: "Model Comparison",
+        format: "HTML",
+        size: "11 KB",
+        href: "/work/bluex/ml/compare_all_models.html",
+        description: "Side-by-side remodel comparison without private feature identifiers.",
+      },
+      {
+        title: "Recruiter Decision Dashboard",
+        format: "HTML",
+        size: "13 KB",
+        href: "/work/bluex/recruiter-decision-dashboard.html",
+        description:
+          "Decision-vocabulary view for recruiters; formulas and private recipes stay private.",
       },
     ],
     coverImage: "/work/bluex/cover-dashboard.svg",
@@ -203,6 +234,14 @@ export const projects: Project[] = [
       },
     ],
     files: [
+      {
+        title: "Weekly Ops Diagrams",
+        format: "HTML",
+        size: "20 KB",
+        href: "/work/weekly-ops-kit/index.html",
+        description:
+          "Clickable diagram previews: open each full diagram or its Mermaid source file. Sample/process only — not Agoda production.",
+      },
       {
         title: "Travel Funnel Dashboard",
         format: "HTML",

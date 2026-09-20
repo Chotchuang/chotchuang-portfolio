@@ -30,7 +30,7 @@ test("renders the portfolio home page", async () => {
   const html = await response.text();
   assert.match(html, /Chotchuang/i);
   assert.match(html, /decisions people can act on/i);
-  assert.match(html, /Explore my work/i);
+  assert.match(html, /View Product Operations case/i);
   assert.match(html, /Completed work/i);
   assert.match(html, /Merchant Growth/i);
   assert.match(html, /Financial CRM/i);
@@ -57,8 +57,9 @@ test("renders the project archive and a project case", async () => {
   assert.match(caseHtml, /Investment Intelligence for Retail Investors/i);
   assert.match(caseHtml, /Open live project/i);
   assert.match(caseHtml, /MY ROLE/i);
-  assert.match(caseHtml, /ML Signal Research Hub/i);
-  assert.match(caseHtml, /index-ensemble\.html/i);
+  assert.match(caseHtml, /Research Overview/i);
+  assert.match(caseHtml, /Current Signal Overview/i);
+  assert.doesNotMatch(caseHtml, /Current HUD Hub/i);
 });
 
 test("renders selected work files and the updated work email", async () => {
@@ -89,6 +90,7 @@ test("renders travel case with weekly ops brief", async () => {
   const response = await render("/project/travel-product-analytics");
   assert.equal(response.status, 200);
   const html = await response.text();
+  assert.match(html, /Weekly Ops Diagrams/i);
   assert.match(html, /Weekly Product Ops Brief/i);
-  assert.match(html, /weekly-ops-brief\.html/i);
+  assert.doesNotMatch(html, /D0[1-9]/i);
 });

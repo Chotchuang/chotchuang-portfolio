@@ -1,0 +1,11 @@
+%% Funnel experiment workflow
+%% Caption: Synthetic clickstream → SQL funnel → simulated A/B → decision.
+%% Truth: synthetic sessions + simulated experiment (not production)
+flowchart LR
+  Q0[Phase 0–1<br/>Generate clickstream] --> Q2[Phase 2<br/>Funnel SQL]
+  Q2 --> Q3[Phase 3<br/>Power / design]
+  Q3 --> Q4[Phase 4<br/>Simulate A/B]
+  Q4 --> Q5[Phase 5<br/>Guardrails + decision]
+  Q5 --> Q6[Phase 6<br/>Dashboard + briefs]
+  Q6 --> DEC{Primary readout}
+  DEC -->|this package| DNS[DO_NOT_SHIP]

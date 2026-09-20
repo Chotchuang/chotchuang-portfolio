@@ -1,0 +1,20 @@
+%% Kit vs showcase
+%% Caption: Portfolio pages prove skill; the kit is a reusable Monday binder.
+%% Truth: process diagram (no metrics)
+flowchart TB
+  subgraph SHOW["ชั้นโชว์บนเว็บ"]
+    A1[Case study / screenshot] --> A2[Recruiter เชื่อว่าทำได้]
+  end
+
+  subgraph KIT["ชั้น Runnable kit"]
+    B1[Sample หรือข้อมูลของคุณ] --> B2[config + run_once.py]
+    B2 --> B3[รายงาน + brief + flags + lineage]
+    B3 --> B4[คนอื่นดัดแปลงโดเมนตัวเองได้]
+  end
+
+  SHOW -.->|ไม่พอถ้าเป้าหมายคือ reuse| KIT
+
+  classDef muted fill:#f5f5f5,stroke:#999,color:#333
+  classDef accent fill:#e8f4ff,stroke:#336699,color:#123
+  class SHOW muted
+  class KIT accent

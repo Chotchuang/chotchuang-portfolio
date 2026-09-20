@@ -1,0 +1,12 @@
+%% Travel to reusable kit
+%% Caption: P1 score → P2 funnel/experiment → P3 weekly binder → domain-agnostic kit.
+%% Truth labels on each node
+flowchart LR
+  P1["P1 Content quality<br/>truth: public + derived + proxy"]
+  P2["P2 Funnel + A/B<br/>truth: synthetic + simulated"]
+  P3["P3 Weekly binder<br/>truth: derived package"]
+  KIT["weekly-ops-report-kit<br/>truth: sample / BYO metrics"]
+
+  P1 -->|"artifacts for binder"| P3
+  P2 -->|"artifacts for binder"| P3
+  P3 -->|"แนวคิดแยกเป็นแม่พิมพ์<br/>ไม่ผูก P1/P2"| KIT

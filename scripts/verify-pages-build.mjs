@@ -53,6 +53,8 @@ const requiredFiles = [
   "work/travel-analytics/content-quality-prioritization.sql",
   "work/travel-analytics/funnel-experiment-analysis.sql",
   "work/travel-analytics/cover-funnel.svg",
+  "work/weekly-ops-kit/index.html",
+  "work/weekly-ops-kit/full.html",
   "work/adblocker-strategy-capstone.pdf",
   "work/diversification-model-capstone.pdf",
   "work/ai-algorithmic-trading-research-guide.pdf",
@@ -184,7 +186,9 @@ assert.match(projectIndex, /PROJECT ARCHIVE/i);
 assert.match(filesIndex, /WORK FILES/i);
 assert.match(filesIndex, /Merchant Growth Strategy Deck/i);
 assert.match(filesIndex, /Weekly Product Ops Brief/i);
+assert.match(filesIndex, /Weekly Ops Diagrams/i);
 assert.match(filesIndex, /Agentic FinOps Executive Summary/i);
+assert.doesNotMatch(filesIndex, /\bD0[1-9]\b/i);
 assert.match(home, /chotchuang\.cc@gmail\.com/i);
 assert.doesNotMatch(home, /cc\.tsrif@gmail\.com/i);
 
