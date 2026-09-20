@@ -151,6 +151,38 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="section work-experience" aria-labelledby="work-experience-title">
+          <div className="work-experience-copy">
+            <p className="eyebrow">MY RECENT WORK EXPERIENCE</p>
+            <h2 id="work-experience-title">Building partnerships in a technology team.</h2>
+            <p>
+              In 2025, I was listed as Director, Business Development, Thailand at
+              ParallelChain Lab. The profile and team directory below document that
+              role and the broader group I worked alongside.
+            </p>
+          </div>
+          <div className="work-experience-media">
+            <figure>
+              <img
+                alt="ParallelChain Lab profile listing Chotchuang Chotnapalai as Director, Business Development, Thailand"
+                height={475}
+                src="/about/parallelchain-profile.png"
+                width={820}
+              />
+              <figcaption>Role profile from the former ParallelChain Lab team site.</figcaption>
+            </figure>
+            <figure>
+              <img
+                alt="ParallelChain Lab team directory with the logo and all visible team members, including Chotchuang"
+                height={1176}
+                src="/about/parallelchain-team.png"
+                width={570}
+              />
+              <figcaption>Team directory from the former ParallelChain Lab site.</figcaption>
+            </figure>
+          </div>
+        </section>
+
         <section className="section capability-section">
           <p className="eyebrow">CAPABILITIES</p>
           <div className="capability-grid">
