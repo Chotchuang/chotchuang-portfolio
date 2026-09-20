@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function render(pathname = "/") {
@@ -90,6 +91,9 @@ test("renders travel case with weekly ops brief", async () => {
   const response = await render("/project/travel-product-analytics");
   assert.equal(response.status, 200);
   const html = await response.text();
+  assert.match(html, /Travel Analytics Case Library/i);
+  assert.match(html, /travel-analytics\/index\.html/i);
+  assert.match(html, /travel-analytics-case\.pdf/i);
   assert.match(html, /Weekly Ops Diagrams/i);
   assert.match(html, /Weekly Product Ops Brief/i);
   assert.doesNotMatch(html, /D0[1-9]/i);
@@ -122,4 +126,26 @@ test("renders travel as four equal cases with evidence labels", async () => {
   assert.doesNotMatch(html, /three-part/i);
   assert.doesNotMatch(html, /flagship/i);
   assert.doesNotMatch(html, /300K\+/i);
+});
+
+test("ships a self-contained travel case library", async () => {
+  const root = new URL("../public/work/travel-analytics/", import.meta.url);
+  const [library, bangkokDashboard] = await Promise.all([
+    readFile(new URL("index.html", root), "utf8"),
+    readFile(new URL("bangkok-content-operations-dashboard.html", root), "utf8"),
+  ]);
+
+  for (const file of [
+    "content-quality-dashboard.html",
+    "conversion-funnel-dashboard.html",
+    "weekly-operations-dashboard.html",
+    "bangkok-content-operations-dashboard.html",
+    "travel-analytics-case.pdf",
+  ]) {
+    assert.match(library, new RegExp(`href=\"${file}\"`));
+  }
+
+  assert.match(bangkokDashboard, /href="bangkok-content-claims\.md"/);
+  assert.doesNotMatch(library, /agoda-portfolio|project-[1-4]-|WO-[0-9]/i);
+  assert.doesNotMatch(bangkokDashboard, /\.\.\/docs\//i);
 });

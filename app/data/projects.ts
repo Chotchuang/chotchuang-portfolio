@@ -291,6 +291,22 @@ export const projects: Project[] = [
     ],
     files: [
       {
+        title: "Travel Analytics Case Library",
+        format: "HTML",
+        size: "8 KB",
+        href: "/work/travel-analytics/index.html",
+        description:
+          "Four equal cases with linked dashboards, executive briefs, methodology, limitations, and SQL where applicable.",
+      },
+      {
+        title: "Travel Analytics Recruiter Case",
+        format: "PDF",
+        size: "216 KB",
+        href: "/work/travel-analytics/travel-analytics-case.pdf",
+        description:
+          "A 12-slide portfolio overview that connects the four cases without elevating any single case.",
+      },
+      {
         title: "Weekly Ops Diagrams",
         format: "HTML",
         size: "20 KB",

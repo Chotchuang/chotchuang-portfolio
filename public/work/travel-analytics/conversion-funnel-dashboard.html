@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Project 2 — Funnel & Simulated Experiment Dashboard</title>
+<style>
+:root {
+  --bg:#f4f7f5; --ink:#14201a; --muted:#5b6b63; --card:#fff; --line:rgba(20,32,26,.12);
+  --accent:#0f6b4c; --warn:#8a3b12; --sim:#1d4f91;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,"Iowan Old Style",serif;color:var(--ink);
+background:linear-gradient(180deg,#e7efe9,#f4f7f5 35%,#eef2ef)}
+main{width:min(1040px,100%);margin:0 auto;padding:28px 18px 56px}
+.eyebrow{margin:0;font:600 11px/1.2 ui-sans-serif,system-ui,sans-serif;letter-spacing:.08em;
+text-transform:uppercase;color:var(--muted)}
+h1{margin:8px 0;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.15}
+.lede{margin:0;max-width:40rem;color:var(--muted)}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.7);
+font:12px ui-sans-serif,system-ui,sans-serif;color:var(--muted)}
+.pill.sim{color:var(--sim);border-color:rgba(29,79,145,.25)}
+section{margin-top:28px}
+h2{margin:0 0 12px;font-size:1.2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.label{margin:0;font:12px ui-sans-serif,system-ui,sans-serif;color:var(--muted);text-transform:uppercase}
+.value{margin:6px 0 0;font-size:1.55rem;font-weight:700}
+.badge{display:inline-block;margin-top:8px;padding:2px 8px;border-radius:999px;background:rgba(15,107,76,.1);
+color:var(--accent);font:600 11px ui-sans-serif,system-ui,sans-serif}
+.badge.sim{background:rgba(29,79,145,.1);color:var(--sim)}
+.note{margin:8px 0 0;color:var(--muted);font-size:13px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font:13px ui-sans-serif,system-ui,sans-serif}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-size:11px;text-transform:uppercase}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.caveats{padding:14px 16px;border:1px solid rgba(138,59,18,.28);border-radius:12px;background:rgba(138,59,18,.06)}
+.caveats ul{margin:8px 0 0;padding-left:18px}
+footer{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);
+font:12px ui-sans-serif,system-ui,sans-serif}
+@media(max-width:640px){main{padding:20px 14px 48px}.value{font-size:1.3rem}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <p class="eyebrow">Project 2 · Funnel & experiment</p>
+  <h1>Synthetic funnel + simulated A/B readout</h1>
+  <p class="lede">
+    Decision: whether a review-prominence PDP badge should ship under this simulated evidence.
+    Stakeholder: Product Operations / experiment reviewer. Not Agoda production data.
+  </p>
+  <div class="pills">
+    <span class="pill sim">Synthetic clickstream</span>
+    <span class="pill sim">Simulated experiment</span>
+    <span class="pill">Grain: session / event / BKK PDP</span>
+    <span class="pill">Sessions 25,000 · Events 77,096</span>
+  </div>
+</header>
+
+<section id="overview">
+  <h2>Overview <span class="badge sim">synthetic</span></h2>
+  <div class="grid">
+    <article class="card"><p class="label">Sessions</p><p class="value">25,000</p><p class="badge sim">TA-P2-001 synthetic</p></article>
+    <article class="card"><p class="label">Events</p><p class="value">77,096</p><p class="badge sim">TA-P2-002 synthetic</p></article>
+    <article class="card"><p class="label">Purchases / CVR</p><p class="value">722 / 2.89%</p><p class="badge sim">TA-P2-003 synthetic</p><p class="note">Denominator: 25,000 sessions</p></article>
+    <article class="card"><p class="label">Evidence check</p><p class="value">PASS</p><p class="badge">artifact reconciliation</p></article>
+  </div>
+</section>
+
+<section id="funnel">
+  <h2>Funnel diagnosis <span class="badge sim">synthetic</span></h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Step</th><th>Count</th></tr></thead>
+      <tbody>
+        <tr><td>search</td><td class="num">25,000</td></tr>
+        <tr><td>view_listing</td><td class="num">19,948</td></tr>
+        <tr><td>select_dates</td><td class="num">2,782</td></tr>
+        <tr><td>begin_checkout</td><td class="num">1,302</td></tr>
+        <tr><td>purchase</td><td class="num">722</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Largest drop typically view_listing → select_dates in this synthetic funnel. Project 1 association motivates the badge hypothesis only — not causal proof.</p>
+</section>
+
+<section id="experiment">
+  <h2>Simulated A/B decision and action <span class="badge sim">simulated</span></h2>
+  <div class="grid">
+    <article class="card"><p class="label">Decision</p><p class="value">DO_NOT_SHIP</p><p class="badge sim">primary readout</p><p class="note">No significant uplift detected on primary metric.</p></article>
+    <article class="card"><p class="label">Control vs treatment CVR</p><p class="value">3.64% vs 3.66%</p><p class="note">Arms: 7,151 / 7,266 BKK PDP sessions</p></article>
+    <article class="card"><p class="label">p-value · 95% CI</p><p class="value">0.93612</p><p class="note">Absolute CI [-0.59%, +0.64%] · relative uplift +0.69%</p></article>
+    <article class="card"><p class="label">Power vs design</p><p class="value">14,417 / 339,614</p><p class="badge">underpowered vs design</p><p class="note">α=0.05 · 80% power · 5% relative MDE · ~239 days design estimate — not a launch plan</p></article>
+  </div>
+  <div class="grid" style="margin-top:12px">
+    <article class="card"><p class="label">Bounce proxy guardrail</p><p class="value">pass</p><p class="note">Delta 0.4173 pp vs +2.0 pp · bounce proxy, not product bounce</p></article>
+    <article class="card"><p class="label">AOV guardrail</p><p class="value">pass</p><p class="note">Delta 6.0105% vs -5.0% · simulated THB, not realised revenue</p></article>
+    <article class="card"><p class="label">guardrails_ok</p><p class="value">True</p><p class="note">Conjunction of both checks; unavailable never passes</p></article>
+  </div>
+  <h3 style="margin:18px 0 8px;font-size:1rem">Device segments (exploratory · multiple-testing risk)</h3>
+  <p class="note">Device splits are exploratory and carry multiple-testing risk; they are not separately powered and cannot overrule the primary decision.</p>
+  <div class="table-wrap" style="margin-top:8px">
+    <table>
+      <thead><tr><th>Device</th><th>Control</th><th>Treatment</th><th>Rel. uplift</th><th>p-value</th></tr></thead>
+      <tbody><tr><td>app</td><td class="num">4.54%</td><td class="num">6.23%</td><td class="num">+37.19%</td><td class="num">0.065933</td></tr><tr><td>mobile</td><td class="num">3.00%</td><td class="num">2.50%</td><td class="num">-16.65%</td><td class="num">0.17594</td></tr><tr><td>desktop</td><td class="num">4.33%</td><td class="num">4.27%</td><td class="num">-1.34%</td><td class="num">0.926471</td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Segments cannot overrule <strong>DO_NOT_SHIP</strong>.</p>
+</section>
+
+<section id="caveats">
+  <h2>Caveats</h2>
+  <div class="caveats">
+    <ul>
+      <li>All funnel counts are <strong>synthetic</strong>; the A/B readout is <strong>simulated</strong>.</li>
+      <li>Not Agoda production, not a live marketplace result, not realised revenue, not causal proof from Project 1.</li>
+      <li>Simulation (14,417 PDP sessions) is underpowered versus design (339,614).</li>
+      <li>Bounce metric is a proxy; AOV uses simulated THB amounts.</li>
+      <li>Offline artifact: no CDN and no remote network requests.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  Built from committed generated artifacts only · phase1 / phase2 / design / simulation / readout · works offline.
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Project 3 — Simulated Weekly Ops Package</title>
+<style>
+:root {
+  --bg:#f3f6f8; --ink:#152029; --muted:#5a6a76; --card:#fff; --line:rgba(21,32,41,.12);
+  --accent:#0d5c63; --warn:#8a3b12; --sim:#1d4f91; --der:#3d6b4f;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,"Iowan Old Style",serif;color:var(--ink);
+background:linear-gradient(165deg,#e4eef1 0%,#f3f6f8 40%,#e8eee9 100%)}
+main{width:min(1080px,100%);margin:0 auto;padding:28px 18px 56px}
+.eyebrow{margin:0;font:600 11px/1.2 ui-sans-serif,system-ui,sans-serif;letter-spacing:.08em;
+text-transform:uppercase;color:var(--muted)}
+h1{margin:8px 0;font-size:clamp(1.45rem,3vw,2rem);line-height:1.15}
+.lede{margin:0;max-width:42rem;color:var(--muted)}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.75);
+font:12px ui-sans-serif,system-ui,sans-serif;color:var(--muted)}
+.pill.sim{color:var(--sim);border-color:rgba(29,79,145,.28)}
+.pill.der{color:var(--der);border-color:rgba(61,107,79,.28)}
+section{margin-top:28px}
+h2{margin:0 0 12px;font-size:1.15rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0}
+.label{margin:0;font:12px ui-sans-serif,system-ui,sans-serif;color:var(--muted);text-transform:uppercase}
+.value{margin:6px 0 0;font-size:1.45rem;font-weight:700;max-width:100%;
+overflow-wrap:anywhere;word-break:break-word}
+.badge{display:inline-block;margin-top:8px;padding:2px 8px;border-radius:999px;background:rgba(13,92,99,.1);
+color:var(--accent);font:600 11px ui-sans-serif,system-ui,sans-serif}
+.badge.sim{background:rgba(29,79,145,.1);color:var(--sim)}
+.badge.der{background:rgba(61,107,79,.1);color:var(--der)}
+.note{margin:8px 0 0;color:var(--muted);font-size:13px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font:13px ui-sans-serif,system-ui,sans-serif}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-size:11px;text-transform:uppercase}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.caveats{padding:14px 16px;border:1px solid rgba(138,59,18,.28);border-radius:12px;background:rgba(138,59,18,.06)}
+.caveats ul{margin:8px 0 0;padding-left:18px}
+footer{margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);
+font:12px ui-sans-serif,system-ui,sans-serif}
+@media(max-width:640px){main{padding:20px 14px 48px}.value{font-size:1.25rem;overflow-wrap:anywhere;word-break:break-word}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <p class="eyebrow">Project 3 · Weekly ops package</p>
+  <h1>Simulated weekly operating brief</h1>
+  <p class="lede">
+    Packages Project 1 content metrics and Project 2 funnel/experiment readout for a portfolio
+    workflow demo. Stakeholder: simulated Product Ops reviewer. Not an Agoda operational report.
+  </p>
+  <div class="pills">
+    <span class="pill der">P1 public / derived / proxy</span>
+    <span class="pill sim">P2 synthetic / simulated</span>
+    <span class="pill">Report date 2026-08-10</span>
+    <span class="pill">WoW: illustrative simulated WoW</span>
+  </div>
+</header>
+
+<section id="overview">
+  <h2>Overview</h2>
+  <div class="grid">
+    <article class="card">
+      <p class="label">P1 listings</p>
+      <p class="value">23,233</p>
+      <p class="badge der">public + derived</p>
+    </article>
+    <article class="card">
+      <p class="label">Below score 70</p>
+      <p class="value">11,480 (49.41%)</p>
+      <p class="badge der">derived</p>
+    </article>
+    <article class="card">
+      <p class="label">P2 sessions / events</p>
+      <p class="value">25,000 / 77,096</p>
+      <p class="badge sim">synthetic</p>
+    </article>
+    <article class="card">
+      <p class="label">P2 decision</p>
+      <p class="value">DO_NOT_SHIP</p>
+      <p class="badge sim">simulated</p>
+      <p class="note">CVR 2.89% · purchases 722</p>
+    </article>
+  </div>
+</section>
+
+<section id="lineage">
+  <h2>Lineage / diagnosis</h2>
+  <div class="grid">
+    <article class="card">
+      <p class="label">P1 top-50 uplift</p>
+      <p class="value">+8,908</p>
+      <p class="badge der">modelled review proxy</p>
+      <p class="note">Not bookings, revenue, or causal impact</p>
+    </article>
+    <article class="card">
+      <p class="label">Experiment primary</p>
+      <p class="value">3.64% vs 3.66%</p>
+      <p class="note">Uplift +0.69% · p=0.93612 · CI [-0.59%, +0.64%]</p>
+      <p class="badge sim">simulated</p>
+    </article>
+    <article class="card">
+      <p class="label">WoW</p>
+      <p class="value">illustrative simulated WoW</p>
+      <p class="badge">illustrative / unavailable</p>
+      <p class="note">WoW compares portfolio demonstration snapshots only — not a live Agoda operating trend.</p>
+    </article>
+    <article class="card">
+      <p class="label">Reconciliation</p>
+      <p class="value">PASS</p>
+      <p class="badge">artifact checks</p>
+    </article>
+  </div>
+  <div class="table-wrap" style="margin-top:12px">
+    <table>
+      <thead><tr><th>Check</th><th>OK</th><th>Detail</th></tr></thead>
+      <tbody><tr><td>p1_listings</td><td>True</td><td>total_listings=23233 expected 23233</td></tr><tr><td>p1_below_threshold</td><td>True</td><td>at_risk=11480 (49.41%) expected 11480 (49.41%)</td></tr><tr><td>p1_uplift_proxy</td><td>True</td><td>uplift=8908.0 expected 8908.0</td></tr><tr><td>p1_truth_labels</td><td>True</td><td>truth_class=public_source_derived_and_proxy</td></tr><tr><td>p2_funnel_counts</td><td>True</td><td>sessions/events/purchases/cvr=25000/77096/722/2.89</td></tr><tr><td>p2_decision</td><td>True</td><td>decision=DO_NOT_SHIP</td></tr><tr><td>p2_primary_rates</td><td>True</td><td>ctrl/treat/uplift/p=0.0364/0.0366/0.0069/0.93612</td></tr><tr><td>p2_ci</td><td>True</td><td>ci=[-0.0059, 0.0064] expected [-0.0059, 0.0064]</td></tr><tr><td>p2_truth_labels</td><td>True</td><td>truth_class=synthetic_clickstream_and_simulated_experiment</td></tr><tr><td>no_stale_p2_uplift</td><td>True</td><td>relative_uplift=0.0069</td></tr></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="actions">
+  <h2>Action queue (simulated workflow labels)</h2>
+  <p class="note">Owners and channel names are placeholders for the portfolio demo — not real Agoda teams, SLAs or workplace channels.</p>
+  <div class="table-wrap" style="margin-top:8px">
+    <table>
+      <thead><tr><th>Metric</th><th>Light</th><th>Owner</th><th>Action</th><th>Note</th></tr></thead>
+      <tbody><tr><td>content_avg_score</td><td>YELLOW</td><td>{Funnel Analyst}</td><td>Investigate within simulated weekly ops cycle; prepare briefing</td><td>simulated workflow role label — not a real Agoda team assignment</td></tr><tr><td>good_tier_pct</td><td>RED</td><td>{Product PM}</td><td>Escalate in simulated ops review; block launch-style claims</td><td>simulated workflow role label — not a real Agoda team assignment</td></tr><tr><td>critical_tier_pct</td><td>RED</td><td>{Product PM}</td><td>Escalate in simulated ops review; block launch-style claims</td><td>simulated workflow role label — not a real Agoda team assignment</td></tr><tr><td>overall_cvr_pct</td><td>YELLOW</td><td>{Funnel Analyst}</td><td>Investigate within simulated weekly ops cycle; prepare briefing</td><td>simulated workflow role label — not a real Agoda team assignment</td></tr></tbody>
+    </table>
+  </div>
+  <h3 style="margin:18px 0 8px;font-size:1rem">Top RICE (derived backlog)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Rank</th><th>Property</th><th>Score</th><th>RICE</th><th>Action</th></tr></thead>
+      <tbody><tr><td class='num'>1</td><td>Cozy canal house near Grand palace,Entire hou</td><td class='num'>65.0</td><td class='num'>12.42</td><td>Expand description to 150+ words</td></tr><tr><td class='num'>2</td><td>2-bed 95m2 apt nice view near Emporium</td><td class='num'>30.0</td><td class='num'>12.39</td><td>Expand description to 150+ words; Add missing amenities (WiF</td></tr><tr><td class='num'>3</td><td>Angel’s City Downtown World Class 3 beds 6 pa</td><td class='num'>66.63</td><td class='num'>12.29</td><td>Expand description to 150+ words</td></tr><tr><td class='num'>4</td><td>MIQ_home404/Asok BTS/Resort Pool/10pax/1000mb</td><td class='num'>65.0</td><td class='num'>12.23</td><td>Expand description to 150+ words</td></tr><tr><td class='num'>5</td><td>HomeFamily&amp;Friend​(3BR) 2min  MRT QueenSiriki</td><td class='num'>65.0</td><td class='num'>12.2</td><td>Expand description to 150+ words</td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Primary experiment decision remains <strong>DO_NOT_SHIP</strong>. Exploratory device cuts cannot override it; this package does not propose shipping by device segment.</p>
+</section>
+
+<section id="caveats">
+  <h2>Caveats</h2>
+  <div class="caveats">
+    <ul>
+      <li>Portfolio workflow demonstration — not Agoda production performance.</li>
+      <li>P1 figures keep public/derived/proxy labels; 8,908 is a modelled review proxy.</li>
+      <li>P2 sessions/events/purchases are synthetic; the experiment is simulated.</li>
+      <li>WoW is illustrative simulated comparison of demonstration snapshots, or unavailable.</li>
+      <li>TA-P3-002 timing claim is unavailable and is omitted from this package.</li>
+      <li>Offline artifact: no remote URLs or CDN dependencies.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  Built from committed P1/P2 artifacts + read-only P3 reference snapshots · report_date=2026-08-10 · works offline.
+</footer>
+</main>
+</body>
+</html>

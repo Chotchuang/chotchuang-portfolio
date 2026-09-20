@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Project 1 — Content Quality Audit Dashboard</title>
+<style>
+:root {
+  --bg: #f6f3ee;
+  --ink: #1c1917;
+  --muted: #57534e;
+  --card: #fffdf9;
+  --line: rgba(28,25,23,.12);
+  --accent: #0f766e;
+  --warn: #9a3412;
+  --proxy: #7c2d12;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(15,118,110,.08), transparent 40%),
+    linear-gradient(180deg, #efe8dc 0%, var(--bg) 40%, #ebe4d8 100%);
+  line-height: 1.5;
+}
+main {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  padding: 28px 20px 64px;
+}
+header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.15;
+  font-weight: 600;
+}
+.lede {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--muted);
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,.55);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+section {
+  margin-top: 28px;
+}
+h2 {
+  margin: 0 0 12px;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+.label {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.value {
+  margin: 6px 0 0;
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+.badge {
+  margin: 8px 0 0;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(15,118,110,.1);
+  color: var(--accent);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge.proxy {
+  background: rgba(154,52,18,.12);
+  color: var(--proxy);
+}
+.note {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  background: rgba(0,0,0,.02);
+}
+td.num {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+tr:last-child td { border-bottom: 0; }
+.caveats {
+  padding: 14px 16px;
+  border: 1px solid rgba(154,52,18,.25);
+  border-radius: 12px;
+  background: rgba(154,52,18,.06);
+}
+.caveats ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+.caveats li + li { margin-top: 4px; }
+footer {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+@media (max-width: 640px) {
+  main { padding: 20px 14px 48px; }
+  .value { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <p class="eyebrow">Project 1 · Content operations framework</p>
+  <h1>Content Quality Audit — recruiter dashboard</h1>
+  <p class="lede">
+    Decision: which incomplete Bangkok listings to fix first under limited ops capacity.
+    Stakeholder: Product Operations / content ops. Equal-weight portfolio case — not the flagship.
+  </p>
+  <div class="meta">
+    <span class="pill">Source: Inside Airbnb Bangkok</span>
+    <span class="pill">Snapshot: 2025-09-26</span>
+    <span class="pill">Grain: listing</span>
+    <span class="pill">Denominator: 23,233 scored listings</span>
+    <span class="pill">Public + derived + modelled proxy</span>
+  </div>
+</header>
+
+<section id="overview">
+  <h2>Overview</h2>
+  <div class="grid">
+    <article class="card"><p class="label">Listings scored</p><p class="value">23,233</p><p class="badge">public + derived</p><p class="note">TA-P1-001 · after cleaning</p></article>
+    <article class="card"><p class="label">Below score 70</p><p class="value">11,480 (49.41%)</p><p class="badge">derived</p><p class="note">TA-P1-002 · provisional threshold</p></article>
+    <article class="card"><p class="label">Top-50 review uplift</p><p class="value">8,908</p><p class="badge">modelled review proxy</p><p class="note">TA-P1-003 · not observed bookings</p></article>
+    <article class="card"><p class="label">Critical tier</p><p class="value">2,701</p><p class="badge">derived</p><p class="note">Score &lt; 40</p></article>
+  </div>
+</section>
+
+<section id="diagnosis">
+  <h2>Diagnosis</h2>
+  <div class="grid">
+    <article class="card"><p class="label">Description gap</p><p class="value">94.46%</p><p class="badge">derived</p><p class="note">Below 150 words</p></article>
+    <article class="card"><p class="label">Reviews gap</p><p class="value">53.03%</p><p class="badge">derived</p><p class="note">Below 5 reviews</p></article>
+    <article class="card"><p class="label">High vs low median reviews</p><p class="value">16 vs 0</p><p class="badge">derived association</p><p class="note">Association, not causation</p></article>
+    <article class="card"><p class="label">Regression association</p><p class="value">~77% / +10 pts</p><p class="badge">derived association</p><p class="note">R² = 0.4515 · holds price</p></article>
+  </div>
+  <p class="note" style="margin-top:12px">
+    Working-assumption weights (sum 100): description 35,
+    amenity 25, host 20,
+    reviews 20. Host response missing:
+    2,742 (    11.8%).
+    Cleaning retained 23,233 of 28,806 source rows.
+  </p>
+</section>
+
+<section id="priority">
+  <h2>Priority and action evidence</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Segment</th>
+          <th>Listings (n)</th>
+          <th>Avg score</th>
+          <th>Top gap</th>
+          <th>Recommended action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Premium High Potential</td><td class="num">2,870</td><td class="num">49.62</td><td>description</td><td>Immediate 1:1 outreach. Assign content specialist. Upgrade photos/description within 7 days. Highest ROI per effort.</td></tr><tr><td>Mid Market Volume</td><td class="num">6,296</td><td class="num">52.04</td><td>description</td><td>Batch content templates by gap type. Weekly sprint of 20–30 listings. Use standardized amenity/description checklists.</td></tr><tr><td>Long tail Low Priority</td><td class="num">2,314</td><td class="num">47.87</td><td>reviews</td><td>Monitor quarterly. Auto-email hosts with self-serve content guide. Do not allocate manual ops until score drops to Critical.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note" style="margin-top:10px">
+    Recommended action: prioritize Premium High Potential outreach, then Mid-Market description batch fixes.
+    Top-50 modelled impact: <strong>8,908 modelled review proxy</strong> (not an observed outcome).
+  </p>
+</section>
+
+<section id="sensitivity">
+  <h2>Weight sensitivity (working assumptions)</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Weights</th>
+          <th>Below threshold</th>
+          <th>Tier-change rate</th>
+          <th>Spearman vs baseline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>baseline_current</td><td>d35/a25/h20/r20</td><td class="num">11,480 (49.41%)</td><td class="num">0.0%</td><td class="num">1.0</td></tr><tr><td>equal_components</td><td>d25/a25/h25/r25</td><td class="num">10,342 (44.51%)</td><td class="num">8.66%</td><td class="num">0.9862</td></tr><tr><td>description_heavy</td><td>d45/a20/h20/r15</td><td class="num">12,884 (55.46%)</td><td class="num">8.88%</td><td class="num">0.9755</td></tr><tr><td>trust_heavy</td><td>d30/a20/h25/r25</td><td class="num">10,869 (46.78%)</td><td class="num">7.72%</td><td class="num">0.9921</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note" style="margin-top:10px">
+    Segment stability tables with sample sizes live in
+    <code>output/sensitivity_analysis.md</code>.
+  </p>
+</section>
+
+<section id="caveats">
+  <h2>Caveats</h2>
+  <div class="caveats">
+    <ul>
+      <li>Public Airbnb Bangkok snapshot (2025-09-26) — OTA industry analogue, not Agoda inventory.</li>
+      <li>Score weights are working assumptions; sensitivity explores alternatives that sum to 100.</li>
+      <li>Association between content score and reviews is not causal impact.</li>
+      <li>The value 8,908 is a <strong>modelled review proxy</strong>, never an observed booking or revenue outcome.</li>
+      <li>Offline artifact: no CDN scripts or stylesheets.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  Built from generated artifacts only ·
+  phase2 / business_impact / phase3 / segment_playbooks / sensitivity_analysis / data_quality_report ·
+  open locally; works offline.
+</footer>
+</main>
+</body>
+</html>
