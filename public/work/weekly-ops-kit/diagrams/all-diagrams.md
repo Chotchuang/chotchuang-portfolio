@@ -10,7 +10,7 @@ Evidence boundary: [../diagram-notes.md](../diagram-notes.md)
 ```mermaid
 flowchart TB
   subgraph SHOW["ชั้นโชว์บนเว็บ"]
-    A1[Case study / screenshot] --> A2[Recruiter เชื่อว่าทำได้]
+    A1[Case study / screenshot] --> A2[ผู้อ่านเข้าใจการทำงาน]
   end
 
   subgraph KIT["ชั้น Runnable kit"]

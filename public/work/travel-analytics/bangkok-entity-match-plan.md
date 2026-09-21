@@ -40,7 +40,7 @@ Draw a stratified random sample from committed `entity_matches` plus a spatial n
 - Every match remains a **review candidate**.
 - Allowed statuses: `manual_review`, `high_confidence_review` only.
 - **No auto-merge**, no “probability of match”, no published precision/recall.
-- Recruiter materials must say evaluation is pending.
+- This case must say evaluation is pending.
 
 ## Exit criteria for any future automation pilot
 

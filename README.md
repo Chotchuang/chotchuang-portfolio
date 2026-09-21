@@ -29,7 +29,7 @@ channel quality, conversion, product mix, refunds, and budget allocation.
 
 ## Current builds
 
-- [BlueX investment intelligence](https://chotchuang.uk/project/bluex/) — public-safe research interface; in progress and not trading advice.
+- [BlueX investment intelligence](https://chotchuang.uk/project/bluex/) — a sanitized research interface; in progress and not trading advice.
 - [Daily Intel Hub](https://chotchuang.uk/project/daily-intel-hub/) — a recurring decision-brief workflow in active development.
 
 Earlier coursework, concepts, and focused research remain available in the

@@ -87,7 +87,7 @@ export const projects: Project[] = [
         size: "4 KB",
         href: "/work/bluex/ml-signal-research.html",
         description:
-          "Public-safe entry point for current HUD links, remodel summaries, model compare, and capital-set sample.",
+          "Sanitized entry point for current HUD links, remodel summaries, model compare, and capital-set sample.",
       },
       {
         title: "Current Signal Overview",
@@ -386,7 +386,7 @@ export const projects: Project[] = [
         size: "9 KB",
         href: "/work/ecommerce-growth/capstone-evidence.pdf",
         description:
-          "A portfolio-ready summary of the original capstone’s data model, SQL evidence, findings, recommendations, and limitations.",
+          "A summary of the original capstone’s data model, SQL evidence, findings, recommendations, and limitations.",
       },
       {
         title: "E-commerce Budget Allocation",
@@ -594,7 +594,7 @@ export const projects: Project[] = [
         format: "SQL",
         size: "8 KB",
         href: "/work/financial-crm/schema.sql",
-        description: "Public-safe source schema showing tables, constraints, indexes, triggers, and reporting views. No sample client data included.",
+        description: "Source schema showing tables, constraints, indexes, triggers, and reporting views. No sample client data included.",
       },
     ],
   },
@@ -632,7 +632,7 @@ export const projects: Project[] = [
         format: "SQL",
         size: "4 KB",
         href: "/work/restaurant-data-model/schema.sql",
-        description: "Public-safe 3NF schema with 11 tables, primary/foreign keys, and sensitive-field classification comments.",
+        description: "3NF schema with 11 tables, primary/foreign keys, and sensitive-field classification comments.",
       },
       {
         title: "Business Queries",

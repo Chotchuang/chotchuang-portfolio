@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The About page includes a short recent-work-experience block so recruiters can verify the ParallelChain Lab business-development credential.
+The About page includes a short recent-work-experience block so visitors can verify the ParallelChain Lab business-development credential.
 
 ## Visitor content
 
@@ -13,5 +13,5 @@ The About page includes a short recent-work-experience block so recruiters can v
 ## Publication safeguards
 
 - Images are cropped to remove device chrome and unrelated personal details.
-- Do not publish proprietary internal documents, personal data, credentials, or customer information.
+- Exclude proprietary internal documents, personal data, credentials, and customer information.
 - Keep the copy factual and limited to evidence supplied for public use.

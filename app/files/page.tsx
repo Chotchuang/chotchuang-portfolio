@@ -24,9 +24,9 @@ export default function WorkFilesPage() {
             <span> open and inspect.</span>
           </h1>
           <p>
-            A recruiter-ready selection of decks, editable analytical models, and
-            browser-based dashboards. Synthetic and public-source work is labeled
-            clearly; private data is not published.
+            Decks, editable analytical models, and browser-based dashboards from
+            the case studies. Each item states its evidence type and scope; private
+            data is not included.
           </p>
           <div className="file-summary" aria-label="Work file summary">
             <span>
@@ -80,12 +80,12 @@ export default function WorkFilesPage() {
         </section>
 
         <section className="file-integrity">
-          <p className="eyebrow">PUBLICATION NOTE</p>
-          <h2>Selected for evidence, screened for privacy.</h2>
+          <p className="eyebrow">FILE NOTES</p>
+          <h2>Evidence type and scope are stated with each case.</h2>
           <p>
-            Published files use synthetic, simulated, historical, or public-source
-            evidence as stated in each case study. Personal datasets, credentials,
-            and confidential source files remain private.
+            Files may use synthetic, simulated, historical, or public-source
+            evidence. Personal datasets, credentials, and confidential source files
+            are not included.
           </p>
         </section>
 

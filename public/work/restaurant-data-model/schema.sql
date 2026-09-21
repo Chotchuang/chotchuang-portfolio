@@ -1,5 +1,5 @@
 -- Restaurant & Cafe Chain — UC Davis final assignment
--- Public-safe schema: no fictional customer, health, contact, or payment records.
+-- Schema only: no fictional customer, health, contact, or payment records.
 
 PRAGMA foreign_keys = ON;
 

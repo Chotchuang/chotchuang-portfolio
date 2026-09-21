@@ -6,7 +6,7 @@ Public-use screenshots supplied by the portfolio owner.
 
 ## Intended use
 
-Support a concise About-page entry that verifies the ParallelChain Lab business-development role for recruiters.
+Support a concise About-page entry that verifies the ParallelChain Lab business-development role for visitors.
 
 ## Boundary
 

@@ -7,6 +7,10 @@ const forbiddenContent = [
   { label: "authoring service name", pattern: /\b(?:codex|chatgpt|openai|claude|copilot)\b/i },
   { label: "internal task label", pattern: /\b(?:work[- ]order|next_(?:codex|cursor)|wo-\d{3,})\b/i },
   { label: "local user path", pattern: /\/Users\/[A-Za-z0-9._-]+\// },
+  {
+    label: "audience-targeting authoring language",
+    pattern: /\b(?:recruiter|hiring manager|portfolio[- ]ready|public[- ]safe|generated locally|owner final approval|do not publish|inspection surface)\b/i,
+  },
 ];
 
 const forbiddenPath = /(?:^|\/)(?:\.openai|agents\.md)(?:\/|$)|\b(?:codex|chatgpt|openai)\b/i;

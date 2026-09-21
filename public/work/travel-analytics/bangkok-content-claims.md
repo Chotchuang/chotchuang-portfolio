@@ -1,6 +1,6 @@
-# Recruiter Claims — Project 4
+# Claims — Project 4
 
-Use only the statements below in recruiter-facing materials. Keep truth labels adjacent to every figure.
+Use only the statements below in case materials. Keep truth labels adjacent to every figure.
 
 ## Claim sheet
 
@@ -29,6 +29,6 @@ Use only the statements below in recruiter-facing materials. Keep truth labels a
 1. `DATA_AND_METRIC_CONTRACT.md`
 2. `docs/METHODOLOGY_AND_LIMITATIONS.md`
 3. `docs/ENTITY_MATCH_EVALUATION_PLAN.md`
-4. `output/recruiter_evidence_check.md`
+4. `output/evidence_check.md`
 5. `output/priority_sensitivity.md`
 6. `output/dashboard.html` (offline portable artifact — do not treat chart SLA as real ops)

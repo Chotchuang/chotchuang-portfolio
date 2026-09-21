@@ -1,4 +1,4 @@
-# Recruiter evidence check — Project 4
+# Evidence check — Project 4
 
 **Overall:** PASS
 

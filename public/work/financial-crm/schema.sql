@@ -1,5 +1,5 @@
 -- Financial CRM & Portfolio Database
--- CS50 SQL final project: public-safe schema only.
+-- CS50 SQL final project: sanitized schema only.
 -- Sample client data and maintenance queries are intentionally excluded.
 
 PRAGMA foreign_keys = ON;

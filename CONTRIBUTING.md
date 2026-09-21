@@ -1,8 +1,7 @@
 # Contribution guide
 
 This public repository powers <https://chotchuang.uk>. Keep every committed
-file suitable for review by a hiring manager, collaborator, or technical
-reviewer.
+file clear to a visitor, collaborator, or technical reader.
 
 ## Editorial standard
 

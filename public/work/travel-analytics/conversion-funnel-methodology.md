@@ -37,4 +37,4 @@ Device cut readouts are exploratory and face multiple-testing risk. They cannot 
 - Synthetic data ≠ Agoda or any live marketplace.
 - Simulated treatment effect path is illustrative.
 - Design days-to-power (239) is a planning assumption, not a calendar commitment.
-- Tableau HTML remains an archival asset; the recruiter package dashboard is the inspection surface for this contract.
+- Tableau HTML remains an archival asset; the case dashboard is the primary reference for this contract.

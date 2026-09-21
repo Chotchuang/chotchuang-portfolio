@@ -13,7 +13,7 @@ Analogy: a flight simulator for content ops — useful for practising triage and
 3. Detect content/metadata issues and rank them with a demand-weighted **priority proxy**.
 4. Propose OSM entity-match candidates via 1 km spatial blocking + normalized-name similarity.
 5. Attach a deterministic simulated ticket/SLA/weekly backlog layer labelled `is_simulated = true`.
-6. Publish offline dashboard + decision/executive artifacts. Recruiter package reconciles committed artifacts only — no download.
+6. Publish offline dashboard + decision/executive artifacts. case package reconciles committed artifacts only — no download.
 
 ## Truth classes
 
@@ -31,7 +31,7 @@ Confidence mixes name similarity (65%) and proximity within 1 km (35%). Statuses
 
 ## Priority sensitivity
 
-Severity weights are working assumptions. The recruiter package compares baseline vs an alternate weight map on synthetic fixtures and reports top-queue overlap as a **sensitivity diagnostic**, not measured impact.
+Severity weights are working assumptions. The case package compares baseline vs an alternate weight map on synthetic fixtures and reports top-queue overlap as a **sensitivity diagnostic**, not measured impact.
 
 ## Limitations
 

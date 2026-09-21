@@ -13,7 +13,7 @@ Analogy: a flight checklist binder. Useful for rehearsing the Monday review; it 
 3. Validate required fields; reconcile to the fixed headline numbers for this portfolio cut.
 4. Load the newest compatible committed reference snapshot strictly before `--report-date` (read-only).
 5. Compute traffic lights and optional **illustrative simulated WoW** deltas.
-6. Write only the eight allowed recruiter outputs. Never write snapshots. Never call P1/P2 phase scripts.
+6. Write only the eight allowed case outputs. Never write snapshots. Never call P1/P2 phase scripts.
 
 ## Truth labels travel with the numbers
 
@@ -42,4 +42,4 @@ Exploratory P2 device cuts cannot override `DO_NOT_SHIP`. This package does not 
 - Owners / `#product-ops` are simulated workflow labels.
 - P2 THB fields are simulated proxies if retained for lineage; they do not justify actions.
 - Clean clones without P1/P2 artifacts fail closed with `missing-data:` — they do not fabricate inputs.
-- Recruiter package repeatability depends on identical inputs + explicit `--report-date`, not the system clock.
+- case package repeatability depends on identical inputs + explicit `--report-date`, not the system clock.

@@ -25,7 +25,7 @@ Create a **2-page PDF** or a single clear image plus a one-page methodology note
 - Separate observed values from any inferred or manually classified values.
 - Use accessible color contrast and avoid relying on color alone for meaning.
 
-## What the recruiter should learn
+## What the reader should learn
 
 Within 30 seconds, the reader should see that you can turn a broad retailer comparison into a bounded insight: which industries show higher adoption, how benefit generosity differs, and what the analysis cannot establish.
 

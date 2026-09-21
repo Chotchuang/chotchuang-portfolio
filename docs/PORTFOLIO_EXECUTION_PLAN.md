@@ -1,8 +1,8 @@
 # Portfolio Execution Plan
 
-**Purpose:** raise the portfolio from a strong collection of projects to a recruiter-friendly proof system for Analytics & Growth, Product Operations, and Strategy / Fintech roles.
+**Purpose:** raise the portfolio from a strong collection of projects to a reader-focused proof system for Analytics & Growth, Product Operations, and Strategy / Fintech roles.
 
-**Principle:** a recruiter should be able to understand the business decision, inspect credible evidence, and see the boundary of the claim within one to two minutes. A new project is lower priority than making existing proof easy to inspect.
+**Principle:** a reader should be able to understand the business decision, inspect credible evidence, and see the boundary of the claim within one to two minutes. A new project is lower priority than making existing proof easy to inspect.
 
 ## Current baseline
 
@@ -48,11 +48,11 @@ These cases remain in the archive, but should not be used as lead proof until th
 | Restaurant Data Model | One-page data-governance summary | 3NF, modeling, privacy-aware design | Assignment; do not invent production scale |
 | Hotel Analyzer | Short README-style use-case and test result summary | Python, data cleaning, testing | CLI coursework project |
 | GYF Adblocker | Updated executive one-pager | research framing, experimentation, strategy | Educational case, not company results |
-| Daily Intel Hub | Runnable public-safe end-to-end sample | automation architecture and quality controls | Keep incomplete components visibly In progress |
+| Daily Intel Hub | Runnable public version end-to-end sample | automation architecture and quality controls | Keep incomplete components visibly In progress |
 
 ### Phase 4 — Keep research and concepts credible
 
-- **BlueX:** show only public-safe workflow, validation process, governance, and interface outcomes. Never publish formulas, parameters, features, signal recipes, raw trade data, or instructions that permit trade replication.
+- **BlueX:** show only public version workflow, validation process, governance, and interface outcomes. Never publish formulas, parameters, features, signal recipes, raw trade data, or instructions that permit trade replication.
 - **AI in Trading and Diversification:** present as historical or educational research, never investment advice or performance proof.
 - **Agentic FinOps, Digital Health, Booking Automation:** retain Concept labels until a runnable prototype or evaluated output exists.
 
@@ -60,7 +60,7 @@ These cases remain in the archive, but should not be used as lead proof until th
 
 1. Use the relevant brief in `docs/owner-inputs/` to create or locate the original material.
 2. Send the source file plus any context needed to understand it. Do not send confidential client data, credentials, or proprietary BlueX research.
-3. The portfolio version will be reviewed for claim accuracy, privacy, legibility, disclosure wording, and recruiter relevance.
+3. The portfolio version will be reviewed for claim accuracy, privacy, legibility, disclosure wording, and reader clarity.
 4. Only then create the public version, add it to the project record, validate the site, and publish it.
 
 ## Public-file quality gate
@@ -82,6 +82,6 @@ Every public asset must answer the following before it is linked:
 3. Receive the Retail Rewards source visualization/data and prepare its public case.
 4. Add the Financial CRM walkthrough.
 5. Add the GYF executive one-pager.
-6. Build one runnable, public-safe Daily Intel Hub sample.
+6. Build one runnable, public version Daily Intel Hub sample.
 
 Do not start a new concept project before items 1–3 are complete.

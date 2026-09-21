@@ -2,7 +2,7 @@
 
 ## Why this file matters
 
-The project page currently states that a completed Keynote strategy deck exists, but a recruiter cannot inspect it. One clean public deck will lift this case from a topic claim to credible strategy evidence.
+The project page currently states that a completed Keynote strategy deck exists, but a a visitor cannot inspect it. One clean public deck will lift this case from a topic claim to credible strategy evidence.
 
 ## What to provide
 
@@ -10,7 +10,7 @@ Provide the original Keynote, PowerPoint, or PDF. If the deck contains private n
 
 ## Recommended public version
 
-Create a **6–8 slide PDF**, designed for a hiring manager rather than for a classroom submission.
+Create a **6–8 slide PDF**, designed as a concise standalone document.
 
 | Slide | Focus | Skill / impact it proves |
 | --- | --- | --- |

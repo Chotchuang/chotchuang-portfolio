@@ -6,7 +6,7 @@ const DIAGRAMS = [
     "caption": "เว็บโชว์สกิล vs กล่องที่คนอื่นรันซ้ำได้",
     "truth": "process — no metrics",
     "file": "kit-vs-showcase.mmd",
-    "mermaid": "flowchart TB\n  subgraph SHOW[\"ชั้นโชว์บนเว็บ\"]\n    A1[Case study / screenshot] --> A2[Recruiter เชื่อว่าทำได้]\n  end\n\n  subgraph KIT[\"ชั้น Runnable kit\"]\n    B1[Sample หรือข้อมูลของคุณ] --> B2[config + run_once.py]\n    B2 --> B3[รายงาน + brief + flags + lineage]\n    B3 --> B4[คนอื่นดัดแปลงโดเมนตัวเองได้]\n  end\n\n  SHOW -.->|ไม่พอถ้าเป้าหมายคือ reuse| KIT\n\n  classDef muted fill:#f5f5f5,stroke:#999,color:#333\n  classDef accent fill:#e8f4ff,stroke:#336699,color:#123\n  class SHOW muted\n  class KIT accent\n"
+    "mermaid": "flowchart TB\n  subgraph SHOW[\"ชั้นโชว์บนเว็บ\"]\n    A1[Case study / screenshot] --> A2[ผู้อ่านเข้าใจการทำงาน]\n  end\n\n  subgraph KIT[\"ชั้น Runnable kit\"]\n    B1[Sample หรือข้อมูลของคุณ] --> B2[config + run_once.py]\n    B2 --> B3[รายงาน + brief + flags + lineage]\n    B3 --> B4[คนอื่นดัดแปลงโดเมนตัวเองได้]\n  end\n\n  SHOW -.->|ไม่พอถ้าเป้าหมายคือ reuse| KIT\n\n  classDef muted fill:#f5f5f5,stroke:#999,color:#333\n  classDef accent fill:#e8f4ff,stroke:#336699,color:#123\n  class SHOW muted\n  class KIT accent\n"
   },
   {
     "id": "data-to-report",
@@ -54,7 +54,7 @@ const DIAGRAMS = [
     "caption": "คลิปชีต P1+P2 เป็นรายงานสัปดาห์",
     "truth": "derived weekly demo",
     "file": "weekly-report-binder.mmd",
-    "mermaid": "flowchart TB\n  subgraph UP[\"Upstream artifacts\"]\n    A1[P1 scoring / RICE / tiers]\n    A2[P2 funnel / experiment readout]\n  end\n\n  subgraph P3[\"P3 Weekly Ops Report\"]\n    C1[collect_p1 + collect_p2]\n    C2[load prior snapshot]\n    C3[WoW compare + anomaly flags]\n    C4[report + Slack-style brief<br/>+ lineage + recruiter package]\n  end\n\n  subgraph GATE[\"Contract\"]\n    G1{artifacts ครบ?}\n    G2[missing-data / invalid-data]\n  end\n\n  A1 --> G1\n  A2 --> G1\n  G1 -->|ไม่| G2\n  G1 -->|ใช่| C1 --> C2 --> C3 --> C4\n"
+    "mermaid": "flowchart TB\n  subgraph UP[\"Upstream artifacts\"]\n    A1[P1 scoring / RICE / tiers]\n    A2[P2 funnel / experiment readout]\n  end\n\n  subgraph P3[\"P3 Weekly Ops Report\"]\n    C1[collect_p1 + collect_p2]\n    C2[load prior snapshot]\n    C3[WoW compare + anomaly flags]\n    C4[report + Slack-style brief<br/>+ lineage + case package]\n  end\n\n  subgraph GATE[\"Contract\"]\n    G1{artifacts ครบ?}\n    G2[missing-data / invalid-data]\n  end\n\n  A1 --> G1\n  A2 --> G1\n  G1 -->|ไม่| G2\n  G1 -->|ใช่| C1 --> C2 --> C3 --> C4\n"
   },
   {
     "id": "publish-handoff",
