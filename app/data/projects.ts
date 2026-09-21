@@ -7,7 +7,7 @@ export type ProjectCategory =
 
 export type WorkFile = {
   title: string;
-  format: "PDF" | "Excel" | "HTML" | "Python" | "SQL";
+  format: "PDF" | "Excel" | "HTML" | "Markdown" | "Python" | "SQL";
   size: string;
   href: string;
   description: string;
@@ -532,7 +532,7 @@ export const projects: Project[] = [
       {
         src: "/work/hotel-analyzer/cli-demo.svg",
         alt: "Hotel Analyzer terminal output preview",
-        caption: "Illustrative CLI session showing filters, results, and test status.",
+        caption: "CLI run against the project dataset: Amsterdam price filter and the 13-test suite.",
       },
     ],
     files: [
