@@ -5,9 +5,10 @@ import { SiteHeader } from "./components/SiteHeader";
 import {
   completedProjects,
   conceptProjects,
+  currentBuilds,
+  leadProjects,
   projectBySlug,
   projects,
-  projectsInProgress,
 } from "./data/projects";
 
 export default function Home() {
@@ -67,7 +68,7 @@ export default function Home() {
             <span>completed cases</span>
           </div>
           <div>
-            <strong>{projectsInProgress.length}</strong>
+            <strong>{currentBuilds.length}</strong>
             <span>active builds</span>
           </div>
           <div>
@@ -112,15 +113,15 @@ export default function Home() {
         <section className="section" id="work">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">COMPLETED WORK</p>
-              <h2>Every completed case, ready to inspect.</h2>
+              <p className="eyebrow">SELECTED CASES</p>
+              <h2>Current portfolio work, ready to inspect.</h2>
             </div>
             <Link className="text-link section-link" href="/project">
               Browse all {projects.length} projects <span aria-hidden="true">→</span>
             </Link>
           </div>
           <div className="project-grid featured-grid">
-            {completedProjects.map((project, index) => (
+            {leadProjects.map((project, index) => (
               <ProjectCard index={index} key={project.slug} project={project} />
             ))}
           </div>
@@ -134,24 +135,26 @@ export default function Home() {
             </div>
           </div>
           <div className="project-grid">
-            {projectsInProgress.map((project, index) => (
+            {currentBuilds.map((project, index) => (
               <ProjectCard index={index} key={project.slug} project={project} />
             ))}
           </div>
         </section>
 
-        <section className="section" id="research">
+        <section className="section" id="archive">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">CONCEPT & RESEARCH</p>
-              <h2>Proposals and research, clearly separate from completed builds.</h2>
+              <p className="eyebrow">ARCHIVE & SUPPORTING WORK</p>
+              <h2>Earlier coursework, concepts, and focused research.</h2>
             </div>
+            <Link className="text-link section-link" href="/project">
+              Browse the full archive <span aria-hidden="true">→</span>
+            </Link>
           </div>
-          <div className="project-grid">
-            {conceptProjects.map((project, index) => (
-              <ProjectCard index={index} key={project.slug} project={project} />
-            ))}
-          </div>
+          <p className="page-note">
+            These items remain available for context, but the selected cases above represent
+            the current portfolio focus.
+          </p>
         </section>
 
         <section className="section about-section" id="about">

@@ -41,6 +41,7 @@ const requiredFiles = [
   "work/bluex/cover-momentum-chart.svg",
   "work/bluex/architecture.svg",
   "work/bluex/ml-signal-research.html",
+  "work/bluex/decision-dashboard.html",
   "work/bluex/ml/index-ensemble.html",
   "work/bluex/ml/index-xgboost.html",
   "work/bluex/ml/index-lightgbm.html",
@@ -182,7 +183,9 @@ const filesIndex = await readFile(new URL("files/index.html", rootUrl), "utf8");
 
 assert.match(home, /CHOTCHUANG/i);
 assert.match(home, /decisions people can act on/i);
-assert.match(projectIndex, /PROJECT ARCHIVE/i);
+assert.match(projectIndex, /PORTFOLIO LIBRARY/i);
+assert.match(projectIndex, /Selected cases/i);
+assert.match(projectIndex, /Archive &amp; supporting work/i);
 assert.match(filesIndex, /WORK FILES/i);
 assert.match(filesIndex, /Merchant Growth Strategy Deck/i);
 assert.match(filesIndex, /Weekly Product Ops Brief/i);

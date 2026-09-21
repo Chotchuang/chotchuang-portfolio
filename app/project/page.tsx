@@ -15,15 +15,15 @@ export default function ProjectIndex() {
       <div className="shell">
         <SiteHeader />
         <section className="page-hero">
-          <p className="eyebrow">PROJECT ARCHIVE</p>
+          <p className="eyebrow">PORTFOLIO LIBRARY</p>
           <h1>
             Work organized around
             <span> decisions and evidence.</span>
           </h1>
           <p>
-            Flagship builds, capstones, engineering labs, and focused research—each
-            labeled so you can see what is observed, simulated, proposed, or still in
-            progress.
+            Start with the selected cases and current builds. Earlier coursework,
+            concepts, and focused research remain available in the supporting archive,
+            each with an explicit evidence label.
           </p>
         </section>
         <section className="project-index-section">

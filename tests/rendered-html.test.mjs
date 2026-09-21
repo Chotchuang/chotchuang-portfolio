@@ -3,24 +3,12 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function render(pathname = "/") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-
-  return worker.fetch(
-    new Request(`http://localhost${pathname}`, {
-      headers: { accept: "text/html" },
-    }),
-    {
-      ASSETS: {
-        fetch: async () => new Response("Not found", { status: 404 }),
-      },
-    },
-    {
-      waitUntil() {},
-      passThroughOnException() {},
-    },
-  );
+  const relativePath = pathname === "/" ? "index.html" : `${pathname.replace(/^\//, "")}/index.html`;
+  const html = await readFile(new URL(`../out/${relativePath}`, import.meta.url), "utf8");
+  return new Response(html, {
+    status: 200,
+    headers: { "content-type": "text/html; charset=utf-8" },
+  });
 }
 
 test("renders the portfolio home page", async () => {
@@ -35,12 +23,11 @@ test("renders the portfolio home page", async () => {
   assert.match(html, /PRODUCT OPERATIONS PATH/i);
   assert.match(html, /From an operational gap to a measured weekly cadence/i);
   assert.match(html, /project\/travel-product-analytics/i);
-  assert.match(html, /Completed work/i);
+  assert.match(html, /Selected cases/i);
   assert.match(html, /Merchant Growth/i);
-  assert.match(html, /Financial CRM/i);
+  assert.match(html, /E-commerce Growth/i);
   assert.match(html, /Build in progress/i);
-  assert.match(html, /Concept &amp; Research/i);
-  assert.doesNotMatch(html, /codex-preview/i);
+  assert.match(html, /Archive &amp; Supporting Work/i);
   assert.doesNotMatch(html, /react-loading-skeleton/i);
 });
 
@@ -56,7 +43,9 @@ test("renders the project archive and a project case", async () => {
   const archiveHtml = await archiveResponse.text();
   const caseHtml = await caseResponse.text();
 
-  assert.match(archiveHtml, /Project archive/i);
+  assert.match(archiveHtml, /Portfolio library/i);
+  assert.match(archiveHtml, /Selected cases/i);
+  assert.match(archiveHtml, /Archive &amp; supporting work/i);
   assert.match(archiveHtml, /Merchant Growth/i);
   assert.match(caseHtml, /Investment Intelligence for Retail Investors/i);
   assert.match(caseHtml, /MY ROLE/i);

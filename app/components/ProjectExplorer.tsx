@@ -1,19 +1,28 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { categories, projects } from "../data/projects";
+import { useState } from "react";
+import {
+  categories,
+  currentBuilds,
+  leadProjects,
+  projects,
+  supportingProjects,
+} from "../data/projects";
 import { ProjectCard } from "./ProjectCard";
 
 export function ProjectExplorer() {
   const [category, setCategory] = useState<(typeof categories)[number]>("All");
 
-  const visibleProjects = useMemo(
-    () =>
-      category === "All"
-        ? projects
-        : projects.filter((project) => project.category === category),
-    [category],
-  );
+  const matchesCategory = (project: (typeof projects)[number]) =>
+    category === "All" || project.category === category;
+
+  const visibleLeadProjects = leadProjects.filter(matchesCategory);
+  const visibleCurrentBuilds = currentBuilds.filter(matchesCategory);
+  const visibleSupportingProjects = supportingProjects.filter(matchesCategory);
+  const visibleCount =
+    visibleLeadProjects.length +
+    visibleCurrentBuilds.length +
+    visibleSupportingProjects.length;
 
   return (
     <>
@@ -30,13 +39,38 @@ export function ProjectExplorer() {
         ))}
       </div>
       <p className="result-count" aria-live="polite">
-        Showing {visibleProjects.length} of {projects.length} projects
+        Showing {visibleCount} of {projects.length} projects
       </p>
-      <div className="project-grid all-projects">
-        {visibleProjects.map((project, index) => (
-          <ProjectCard index={index} key={project.slug} project={project} />
-        ))}
-      </div>
+      {visibleLeadProjects.length ? (
+        <section className="project-library-group" aria-labelledby="selected-cases-title">
+          <h2 id="selected-cases-title">Selected cases</h2>
+          <div className="project-grid all-projects">
+            {visibleLeadProjects.map((project, index) => (
+              <ProjectCard index={index} key={project.slug} project={project} />
+            ))}
+          </div>
+        </section>
+      ) : null}
+      {visibleCurrentBuilds.length ? (
+        <section className="project-library-group" aria-labelledby="current-builds-title">
+          <h2 id="current-builds-title">Current builds</h2>
+          <div className="project-grid all-projects">
+            {visibleCurrentBuilds.map((project, index) => (
+              <ProjectCard index={index} key={project.slug} project={project} />
+            ))}
+          </div>
+        </section>
+      ) : null}
+      {visibleSupportingProjects.length ? (
+        <section className="project-library-group" aria-labelledby="supporting-work-title">
+          <h2 id="supporting-work-title">Archive &amp; supporting work</h2>
+          <div className="project-grid all-projects">
+            {visibleSupportingProjects.map((project, index) => (
+              <ProjectCard index={index} key={project.slug} project={project} />
+            ))}
+          </div>
+        </section>
+      ) : null}
     </>
   );
 }

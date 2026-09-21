@@ -1,64 +1,60 @@
-# Chotchuang Portfolio
+# Chotchuang — Decision-Focused Portfolio
 
-A decision-focused professional portfolio covering business analytics, product,
-fintech, automation, and data systems.
+Business analytics, product operations, fintech, and data systems presented
+through decisions, evidence, and clearly stated limitations.
 
-## What is included
+**[View the live portfolio](https://chotchuang.uk)** ·
+**[Browse all projects](https://chotchuang.uk/project/)** ·
+**[Open work files](https://chotchuang.uk/files/)**
 
-- Home page with selected work and capability overview
-- Filterable project archive at `/project`
-- Six featured case studies and ten supporting projects
-- Explicit evidence labels for public data, synthetic data, simulations,
-  in-progress engineering, and concept work
-- Responsive layout, social preview, sitemap, robots policy, redirects, and
-  baseline security headers
+## Selected cases
 
-## Local development
+### [Travel Product & Supply Analytics](https://chotchuang.uk/project/travel-product-analytics/)
 
-Requirements:
+Four connected cases covering content quality, conversion experiments, weekly
+operations, and supply-readiness prioritization. Uses public sources, derived
+metrics, synthetic clickstream data, and simulated workflows with explicit
+limitations.
 
-- Node.js `22.16.0` (pinned in `.node-version`)
-- npm
+### [Merchant Growth & Fintech Profitability](https://chotchuang.uk/project/merchant-growth-fintech/)
+
+A reproducible decision system for merchant acquisition, retention, campaign
+economics, wallet adoption, contribution margin, and financing guardrails.
+Built with deterministic synthetic data.
+
+### [E-commerce Growth & Commercial Strategy](https://chotchuang.uk/project/ecommerce-growth/)
+
+SQL analysis, commercial recommendations, and an editable planning model for
+channel quality, conversion, product mix, refunds, and budget allocation.
+
+## Current builds
+
+- [BlueX investment intelligence](https://chotchuang.uk/project/bluex/) — public-safe research interface; in progress and not trading advice.
+- [Daily Intel Hub](https://chotchuang.uk/project/daily-intel-hub/) — a recurring decision-brief workflow in active development.
+
+Earlier coursework, concepts, and focused research remain available in the
+[project library](https://chotchuang.uk/project/) as supporting work.
+
+## Evidence standard
+
+Every case states the decision, data type, methods, evidence, and limitations.
+Public-source, derived, proxy, synthetic, simulated, concept, and in-progress
+work are kept distinct. Simulated or proxy outcomes are never presented as
+real commercial impact.
+
+## Run locally
+
+Requirements: Node.js `22.16.0` and npm.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-## Validate both deployment targets
-
-The repository supports the local application build and a fully static
-Cloudflare Pages export.
+Before a release:
 
 ```bash
-# Local application build
-npm test
-
-# Cloudflare Pages static export and limit checks
-npm run check:pages
+npm run check:release
 ```
 
-Cloudflare Pages output is written to `out/`.
-
-## Cloudflare Pages settings
-
-Use the **Next.js (Static HTML Export)** preset with:
-
-| Setting | Value |
-|---|---|
-| Production branch | `main` |
-| Build command | `npm run build:pages` |
-| Build output directory | `out` |
-| Root directory | `/` |
-| Node.js | Read from `.node-version` |
-
-Detailed cutover instructions are in
-[`CLOUDFLARE_HANDOFF.md`](CLOUDFLARE_HANDOFF.md).
-
-## Content maintenance
-
-Project content is centralized in `app/data/projects.ts`. Update a project
-record there, run both validation commands, then commit the result.
-
-No database, authentication service, or runtime environment variables are
-required for this portfolio.
+The static output is written to `out/` for Cloudflare Pages.

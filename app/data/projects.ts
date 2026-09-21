@@ -136,12 +136,12 @@ export const projects: Project[] = [
         description: "Side-by-side remodel comparison without private feature identifiers.",
       },
       {
-        title: "Recruiter Decision Dashboard",
+        title: "Decision Dashboard",
         format: "HTML",
         size: "13 KB",
-        href: "/work/bluex/recruiter-decision-dashboard.html",
+        href: "/work/bluex/decision-dashboard.html",
         description:
-          "Decision-vocabulary view for recruiters; formulas and private recipes stay private.",
+          "Decision-focused public view; formulas and private recipes stay private.",
       },
     ],
     coverImage: "/work/bluex/cover-dashboard.svg",
@@ -298,7 +298,7 @@ export const projects: Project[] = [
           "Four equal cases with linked dashboards, executive briefs, methodology, limitations, and SQL where applicable.",
       },
       {
-        title: "Travel Analytics Recruiter Case",
+        title: "Travel Analytics Portfolio Case",
         format: "PDF",
         size: "216 KB",
         href: "/work/travel-analytics/travel-analytics-case.pdf",
@@ -652,7 +652,7 @@ export const projects: Project[] = [
     status: "In progress",
     disclosure: "Engineering lab · Partially operational",
     summary:
-      "An automated intelligence pipeline for market data, fundamentals, travel-price monitoring, and agent-orchestrated briefings.",
+      "An automated intelligence pipeline for market data, fundamentals, travel-price monitoring, and recurring decision briefs.",
     decision:
       "How can recurring intelligence collection be coordinated into one inspectable, automated workflow?",
     role: "Sole builder of collectors, SQLite persistence, LangGraph orchestration, and ops documentation.",
@@ -790,7 +790,7 @@ export const projects: Project[] = [
     category: "Product & Automation",
     featured: false,
     status: "Concept",
-    disclosure: "Agent-system specification · No runnable implementation located",
+    disclosure: "Workflow specification · No runnable implementation located",
     summary:
       "An orchestrated analytics workflow spanning SQL ingestion, Python modeling, dashboard publishing, and recurring delivery.",
     decision:
@@ -802,7 +802,7 @@ export const projects: Project[] = [
       "Documented email and reporting handoffs",
     ],
     evidence: ["Complete agent and orchestration specifications"],
-    tech: ["Agent orchestration", "SQL", "Python", "Tableau", "Reporting automation"],
+    tech: ["Workflow orchestration", "SQL", "Python", "Tableau", "Reporting automation"],
   },
   {
     slug: "ai-algorithmic-trading",
@@ -838,6 +838,30 @@ export const projects: Project[] = [
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
+
+const leadProjectSlugs = [
+  "merchant-growth-fintech",
+  "travel-product-analytics",
+  "ecommerce-growth",
+] as const;
+
+export const leadProjects = leadProjectSlugs.flatMap((slug) => {
+  const project = projects.find((item) => item.slug === slug);
+  return project ? [project] : [];
+});
+
+export const currentBuilds = projects.filter(
+  (project) => project.status === "In progress",
+);
+
+const primaryProjectSlugs = new Set([
+  ...leadProjectSlugs,
+  ...currentBuilds.map((project) => project.slug),
+]);
+
+export const supportingProjects = projects.filter(
+  (project) => !primaryProjectSlugs.has(project.slug),
+);
 
 export const completedProjects = projects.filter((project) => project.status === "Complete");
 

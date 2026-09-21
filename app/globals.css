@@ -805,6 +805,18 @@ a:focus-visible {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.project-library-group + .project-library-group {
+  border-top: 1px solid var(--line);
+  margin-top: 72px;
+  padding-top: 54px;
+}
+
+.project-library-group > h2 {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  letter-spacing: -0.04em;
+  margin: 0 0 28px;
+}
+
 .case-study {
   padding: 80px 0 110px;
 }
