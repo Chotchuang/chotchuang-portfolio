@@ -32,6 +32,9 @@ test("renders the portfolio home page", async () => {
   assert.match(html, /Chotchuang/i);
   assert.match(html, /decisions people can act on/i);
   assert.match(html, /View Product Operations case/i);
+  assert.match(html, /PRODUCT OPERATIONS PATH/i);
+  assert.match(html, /From an operational gap to a measured weekly cadence/i);
+  assert.match(html, /project\/travel-product-analytics/i);
   assert.match(html, /Completed work/i);
   assert.match(html, /Merchant Growth/i);
   assert.match(html, /Financial CRM/i);
@@ -56,7 +59,6 @@ test("renders the project archive and a project case", async () => {
   assert.match(archiveHtml, /Project archive/i);
   assert.match(archiveHtml, /Merchant Growth/i);
   assert.match(caseHtml, /Investment Intelligence for Retail Investors/i);
-  assert.match(caseHtml, /Open live project/i);
   assert.match(caseHtml, /MY ROLE/i);
   assert.match(caseHtml, /Research Overview/i);
   assert.match(caseHtml, /Current Signal Overview/i);

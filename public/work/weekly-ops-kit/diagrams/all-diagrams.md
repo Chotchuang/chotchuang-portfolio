@@ -1,7 +1,7 @@
 # All diagrams (preview)
 
-Copy Mermaid blocks into a Mermaid live editor, or let Codex render to SVG for the site.
-Canonical brief: [../diagram-notes.md](../diagram-notes.md)
+Copy Mermaid blocks into a Mermaid editor, or render them to SVG for a site.
+Evidence boundary: [../diagram-notes.md](../diagram-notes.md)
 
 ---
 
@@ -137,13 +137,12 @@ flowchart TB
 ```mermaid
 sequenceDiagram
   participant O as Owner
-  participant Cu as Cursor
-  participant Co as Codex
+  participant R as Reviewer
   participant W as Website
-  Cu->>O: Diagram pack ready
-  O->>Co: Paste NEXT_CODEX prompt
-  Co->>Co: Compose + format
-  O->>Co: PUBLISH_APPROVAL
+  O->>R: Submit evidence package
+  R->>R: Check claims and presentation
+  R->>O: Release ready
+  O->>R: Approve publication
   Co->>W: Deploy + verify
 ```
 

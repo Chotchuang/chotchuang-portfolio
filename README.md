@@ -27,11 +27,11 @@ npm run dev
 
 ## Validate both deployment targets
 
-The repository remains compatible with the current OpenAI Sites deployment and
-also produces a fully static Cloudflare Pages export.
+The repository supports the local application build and a fully static
+Cloudflare Pages export.
 
 ```bash
-# OpenAI Sites / vinext build
+# Local application build
 npm test
 
 # Cloudflare Pages static export and limit checks

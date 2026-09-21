@@ -5,11 +5,14 @@ import { SiteHeader } from "./components/SiteHeader";
 import {
   completedProjects,
   conceptProjects,
+  projectBySlug,
   projects,
   projectsInProgress,
 } from "./data/projects";
 
 export default function Home() {
+  const productOperationsCase = projectBySlug("travel-product-analytics");
+
   return (
     <main>
       <div className="shell">
@@ -27,11 +30,11 @@ export default function Home() {
               growth, product, fintech, market intelligence, and data systems.
             </p>
             <div className="hero-actions">
-              <Link className="button button-primary" href="/project">
-                Explore my work
+              <Link className="button button-primary" href="/project/travel-product-analytics">
+                View Product Operations case
               </Link>
-              <Link className="button button-secondary" href="/files">
-                View work files
+              <Link className="button button-secondary" href="/project">
+                Explore all work
               </Link>
               <a className="button button-secondary" href="mailto:chotchuang.cc@gmail.com">
                 Start a conversation
@@ -72,6 +75,39 @@ export default function Home() {
             <span>concepts & research</span>
           </div>
         </section>
+
+        {productOperationsCase ? (
+          <section className="role-path" aria-labelledby="product-operations-path">
+            <div className="role-path-intro">
+              <p className="eyebrow">PRODUCT OPERATIONS PATH</p>
+              <h2 id="product-operations-path">From an operational gap to a measured weekly cadence.</h2>
+              <p>
+                Start with the travel marketplace case: prioritize content gaps, test an
+                intervention, and use a weekly brief to surface exceptions and next actions.
+              </p>
+              <Link className="button button-primary" href={`/project/${productOperationsCase.slug}`}>
+                Open the case study
+              </Link>
+            </div>
+            <div className="role-path-evidence">
+              <p className="eyebrow">WHAT TO INSPECT</p>
+              <ol>
+                <li>
+                  <strong>Decision:</strong> which property-content gaps should be fixed first?
+                </li>
+                <li>
+                  <strong>Evidence:</strong> public listings and synthetic clickstream, with proxy and
+                  simulated impact labelled.
+                </li>
+                <li>
+                  <strong>Operating output:</strong> a ranked backlog, experiment readout, and weekly
+                  Product Ops brief.
+                </li>
+              </ol>
+              <p className="role-path-disclosure">{productOperationsCase.disclosure}</p>
+            </div>
+          </section>
+        ) : null}
 
         <section className="section" id="work">
           <div className="section-heading">

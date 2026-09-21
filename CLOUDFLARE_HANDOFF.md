@@ -67,14 +67,14 @@ Only after the `*.pages.dev` checks pass:
 1. Add `chotchuang.uk` under the Pages project's **Custom domains**.
 2. Add `www.chotchuang.uk` as a second custom domain.
 3. Let Cloudflare create or propose the DNS records.
-4. Remove only the superseded OpenAI Sites DNS records for those two
+4. Remove only the superseded hosting DNS records for those two
    hostnames.
 5. Wait for both domains and SSL certificates to become active.
 6. Test `https://chotchuang.uk/project`.
 7. Configure a permanent redirect from `www.chotchuang.uk` to
    `chotchuang.uk`.
 8. After the domain works, detach the two pending custom domains from the old
-   OpenAI Sites project. Keep the Sites URL temporarily as rollback.
+   previous hosting project. Keep its URL temporarily as rollback.
 
 Do not delete the old deployment before the new domain and SSL are confirmed.
 

@@ -19,7 +19,7 @@ export type ProjectGalleryImage = {
   caption: string;
 };
 
-/** Travel-only equal-case cards (WO-008A). Other projects omit this field. */
+/** Travel-only equal-case cards. Other projects omit this field. */
 export type TravelCase = {
   name: string;
   decision: string;
@@ -157,7 +157,6 @@ export const projects: Project[] = [
         caption: "central_df → scoring/ML → intelligence UI — strict separation of concerns.",
       },
     ],
-    liveUrl: "https://blux-intelligence-board.blackhorsepartner.chatgpt.site",
   },
   {
     slug: "merchant-growth-fintech",

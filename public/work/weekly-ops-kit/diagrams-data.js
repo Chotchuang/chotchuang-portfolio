@@ -59,10 +59,10 @@ const DIAGRAMS = [
   {
     "id": "publish-handoff",
     "title": "Publish handoff",
-    "caption": "Owner ถือ clipboard ระหว่าง Cursor กับ Codex",
+    "caption": "จากการเตรียมหลักฐานสู่การเผยแพร่ที่ตรวจสอบได้",
     "truth": "governance",
     "file": "publish-handoff.mmd",
-    "mermaid": "sequenceDiagram\n  participant O as Owner\n  participant Cu as Cursor\n  participant Co as Codex\n  participant W as chotchuang.uk\n\n  Cu->>Cu: Write Mermaid pack + claims\n  Cu->>O: Handoff + NEXT_CODEX_PROMPT ready\n  O->>Co: Paste NEXT_CODEX_PROMPT_WEEKLY_OPS_KIT\n  Co->>Co: Compose layout · render diagrams · wire page\n  Co->>O: READY for PUBLISH_APPROVAL\n  O->>Co: PUBLISH_APPROVAL\n  Co->>W: Deploy + verify live URLs\n  Co->>O: PRODUCTION_VERIFIED\n"
+    "mermaid": "sequenceDiagram\n  participant O as Owner\n  participant R as Reviewer\n  participant W as Website\n\n  O->>R: Submit evidence package\n  R->>R: Check claims and presentation\n  R->>O: Release ready\n  O->>R: Approve publication\n  R->>W: Deploy and verify live URLs\n  R->>O: Production verified\n"
   },
   {
     "id": "content-quality-workflow",

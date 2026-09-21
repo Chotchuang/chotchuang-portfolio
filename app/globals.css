@@ -340,6 +340,76 @@ a:focus-visible {
   text-transform: uppercase;
 }
 
+.role-path {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  margin: 0;
+}
+
+.role-path-intro,
+.role-path-evidence {
+  padding: 58px;
+}
+
+.role-path-intro {
+  border-right: 1px solid var(--line);
+}
+
+.role-path h2 {
+  font-size: clamp(2.2rem, 4vw, 4.5rem);
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+  margin: 0;
+  max-width: 700px;
+}
+
+.role-path-intro > p:not(.eyebrow) {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin: 25px 0 30px;
+  max-width: 640px;
+}
+
+.role-path-evidence {
+  background: var(--ink);
+  color: var(--paper-bright);
+}
+
+.role-path-evidence .eyebrow {
+  color: var(--cyan);
+}
+
+.role-path-evidence ol {
+  display: grid;
+  gap: 22px;
+  line-height: 1.55;
+  margin: 0;
+  padding-left: 22px;
+}
+
+.role-path-evidence li::marker {
+  color: var(--cyan);
+  font-family: var(--font-geist-mono), monospace;
+  font-weight: 700;
+}
+
+.role-path-evidence strong {
+  color: var(--cyan);
+}
+
+.role-path-disclosure {
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.76);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.76rem;
+  line-height: 1.5;
+  margin: 30px 0 0;
+  padding-top: 18px;
+}
+
 .section {
   border-bottom: 1px solid var(--line);
   padding: 120px 0;
@@ -532,6 +602,7 @@ a:focus-visible {
   gap: 9vw;
   grid-template-columns: minmax(0, 0.95fr) minmax(440px, 1.05fr);
 }
+
 
 .principles article {
   border-top: 1px solid var(--line);
@@ -1172,9 +1243,27 @@ a:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .role-path {
+    grid-template-columns: 1fr;
+  }
+
+  .role-path-intro {
+    border-bottom: 1px solid var(--line);
+    border-right: 0;
+  }
+
   .about-section {
     grid-template-columns: 1fr;
   }
+
+  .work-experience {
+    grid-template-columns: 1fr;
+  }
+
+  .work-experience-media figure:last-child img {
+    max-width: 100%;
+  }
+
 
   .capability-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1230,6 +1319,11 @@ a:focus-visible {
     padding: 22px;
   }
 
+  .role-path-intro,
+  .role-path-evidence {
+    padding: 34px 24px;
+  }
+
   .section {
     padding: 82px 0;
   }
@@ -1259,14 +1353,6 @@ a:focus-visible {
 
   .capability-grid {
     grid-template-columns: 1fr;
-  }
-
-  .work-experience {
-    grid-template-columns: 1fr;
-  }
-
-  .work-experience-media figure:last-child img {
-    max-width: 100%;
   }
 
   .site-footer {

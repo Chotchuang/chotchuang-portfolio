@@ -1,17 +1,14 @@
 %% Publish handoff
-%% Caption: Owner carries clipboard; Codex formats then deploys after approval.
+%% Caption: Evidence is reviewed before publication.
 %% Truth: process / governance
 sequenceDiagram
   participant O as Owner
-  participant Cu as Cursor
-  participant Co as Codex
+  participant R as Reviewer
   participant W as chotchuang.uk
 
-  Cu->>Cu: Write Mermaid pack + claims
-  Cu->>O: Handoff + NEXT_CODEX_PROMPT ready
-  O->>Co: Paste NEXT_CODEX_PROMPT_WEEKLY_OPS_KIT
-  Co->>Co: Compose layout · render diagrams · wire page
-  Co->>O: READY for PUBLISH_APPROVAL
-  O->>Co: PUBLISH_APPROVAL
-  Co->>W: Deploy + verify live URLs
-  Co->>O: PRODUCTION_VERIFIED
+  O->>R: Submit evidence package
+  R->>R: Check claims and presentation
+  R->>O: Release ready
+  O->>R: Approve publication
+  R->>W: Deploy and verify live URLs
+  R->>O: Production verified
