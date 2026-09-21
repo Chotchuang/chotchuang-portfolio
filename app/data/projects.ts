@@ -515,18 +515,18 @@ export const projects: Project[] = [
     status: "Complete",
     disclosure: "CS50 Python final project",
     summary:
-      "A command-line hotel discovery tool that cleans, filters, and summarizes properties by city, price, and rating.",
+      "A command-line hotel discovery tool that cleans, filters, and summarizes properties by city, price, and rating — covering CS50 Python Weeks 0–9 skills in one case.",
     decision:
       "How can travelers narrow a large accommodation dataset into practical, comparable choices?",
-    role: "Sole developer: data cleaning, CLI filters, aggregation, tests, and documentation.",
+    role: "Sole developer: data cleaning, OOP model, CLI, regex parsing, CSV export, interactive prompts, and tests.",
     methods: [
-      "Built a reusable data-cleaning pipeline",
-      "Implemented city, price, and rating filters",
-      "Added grouped summaries and terminal-friendly outputs",
-      "Covered core behavior with automated tests",
+      "Modeled each listing as a Hotel class with properties and string display",
+      "Parsed messy prices with regular expressions and validated CSV paths",
+      "Added argparse CLI, interactive input loops, and optional CSV export",
+      "Covered load, filters, extrema, export, and error paths with pytest",
     ],
-    evidence: ["Source code and dataset", "Automated tests", "README and video demonstration"],
-    tech: ["Python", "pytest", "Data cleaning", "CLI"],
+    evidence: ["Source code and dataset", "Automated tests", "README skill map and video demonstration"],
+    tech: ["Python", "pytest", "regex", "OOP", "CSV I/O", "CLI"],
     coverImage: "/work/hotel-analyzer/cli-demo.svg",
     gallery: [
       {
@@ -539,16 +539,25 @@ export const projects: Project[] = [
       {
         title: "Hotel Analyzer Source Code",
         format: "Python",
-        size: "7 KB",
+        size: "16 KB",
         href: "/work/hotel-analyzer/project.py",
-        description: "Complete Python source for data loading, cleaning, filtering, aggregation, and terminal output.",
+        description:
+          "Python source covering Hotel OOP, regex price cleaning, CLI/interactive modes, filters, aggregates, and CSV export.",
       },
       {
         title: "Automated Test Suite",
         format: "Python",
-        size: "4 KB",
+        size: "6 KB",
         href: "/work/hotel-analyzer/test_project.py",
-        description: "Automated coverage for city search, price filtering, extrema, and grouped averages.",
+        description:
+          "pytest coverage for regex parsing, missing-file errors, city/price filters, extrema, averages, CSV write, and CLI exit codes.",
+      },
+      {
+        title: "Project README",
+        format: "Markdown",
+        size: "3 KB",
+        href: "/work/hotel-analyzer/README.md",
+        description: "Run instructions and a Week 0–9 skill map tying each CS50 topic to the code.",
       },
     ],
   },
